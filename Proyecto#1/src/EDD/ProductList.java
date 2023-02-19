@@ -50,7 +50,7 @@ public class ProductList {
     }
     
     public Nodo insertEnd(Product producto){
-        Nodo<Product> node = new Nodo<>(producto);
+        Nodo<Product> node = new Nodo<Product>(producto);
         if (isEmpty()) {
             setHead(node);
         } else {
@@ -86,4 +86,6 @@ public class ProductList {
         size++;
         return node;
     }
+    
+    
 }
