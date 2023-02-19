@@ -17,37 +17,6 @@ public class Grafo {
         this.last = null;
     }
 
-    /**
-     * @return the first
-     */
-    public Almacen getFirst() {
-        return first;
-    }
-
-    /**
-     * @param first the first to set
-     */
-    public void setFirst(Almacen first) {
-        this.first = first;
-    }
-
-    /**
-     * @return the last
-     */
-    public Almacen getLast() {
-        return last;
-    }
-
-    /**
-     * @param last the last to set
-     */
-    public void setLast(Almacen last) {
-        this.last = last;
-    }
-    
-    public boolean grafoEmpty(){
-        return getFirst() == null;
-    }
     
     public boolean existVertice(Almacen dato){
         boolean exist = false;
@@ -105,8 +74,47 @@ public class Grafo {
         Almacen temp = getFirst();
         while (temp != null){
             cadena = cadena + temp.getName()+" -> "+temp.getListaAdyacencia().Imprimir()+"\n";
+            
+            cadena= cadena+"Almacen "+temp.getName()+"\n"+temp.getListaProductos().mostrar();
+            
             temp = temp.getSiguiente();
         } 
         return cadena;
     }
+    
+    
+    
+    /**
+     * @return the first
+     */
+    public Almacen getFirst() {
+        return first;
+    }
+
+    /**
+     * @param first the first to set
+     */
+    public void setFirst(Almacen first) {
+        this.first = first;
+    }
+
+    /**
+     * @return the last
+     */
+    public Almacen getLast() {
+        return last;
+    }
+
+    /**
+     * @param last the last to set
+     */
+    public void setLast(Almacen last) {
+        this.last = last;
+    }
+    
+    public boolean grafoEmpty(){
+        return getFirst() == null;
+    }
+    
+    
 }

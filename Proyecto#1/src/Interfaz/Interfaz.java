@@ -6,7 +6,13 @@ package Interfaz;
 
 import EDD.Almacen;
 import EDD.Grafo;
+import EDD.Product;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -60,6 +66,11 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         save_txt_button.setText("Cargar Txt");
+        save_txt_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_txt_buttonActionPerformed(evt);
+            }
+        });
         jPanel1.add(save_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jButton2.setText("Pedidos");
@@ -197,6 +208,87 @@ public class Interfaz extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_insertarRuta_buttonActionPerformed
+
+    private void save_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_txt_buttonActionPerformed
+        JFileChooser file = new JFileChooser();
+        
+         FileNameExtensionFilter filter = new FileNameExtensionFilter(".TXT","txt");
+        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        file.setFileFilter(filter);
+        int selection=file.showOpenDialog(this);
+
+        //empieza a actuar si el usuario le da a aceptar
+        if (selection==JFileChooser.APPROVE_OPTION) {
+            
+            File archive=file.getSelectedFile();
+            
+            String path=archive.getAbsolutePath();
+            
+            if(!path.contains("txt")) {
+            System.out.println("HOLAAAAA");}
+            
+            else{
+            try {
+                File archivo = new File (path); 
+                FileReader fr = new FileReader(archivo); 
+                BufferedReader br = new BufferedReader(fr); 
+                 
+                String cadena;
+                String complete=""; 
+      
+                while ((cadena=br.readLine())!=null) { 
+
+                    if(!cadena.isEmpty()&& !cadena.isBlank()) {
+                        complete+=cadena+"\n";
+                    }
+                }
+                
+                fr.close();
+                br.close();
+                JOptionPane.showMessageDialog(null, complete);
+                if(!"".equals(complete)) {
+ 
+                    String[] info;
+                    Grafo grafo = Global.getGrafo();
+                    String [] todo= complete.split(";");
+                    String[] almacenes;
+                    String[] detalles;
+                    String nombre[];
+                    String letra;
+                    Almacen alma;
+
+                    for (int i = 0; i < todo.length; i++) {
+                        if (todo[i].contains(":")) {
+                          almacenes=todo[i].split(":");
+                          nombre=almacenes[0].split(" ");
+                          letra=nombre[1];
+                          alma=new Almacen(letra);
+                          grafo.newNode(alma);
+                          info=almacenes[1].split("\n");
+                              for (int j = 0; j < info.length; j++) {
+                               detalles=info[j].split(",");
+                               if(detalles.length>1) {
+                                  alma.getListaProductos().insertEnd(new Product(detalles[0],Integer.parseInt(detalles[1])));
+                               }
+
+                            }
+                        }
+                    }
+                    System.out.println(grafo.printGrafo());
+                }
+
+              
+            } catch (Exception e) {
+            }
+            
+        
+            }
+
+        
+        
+        
+        }
+    }//GEN-LAST:event_save_txt_buttonActionPerformed
 
     /**
      * @param args the command line arguments

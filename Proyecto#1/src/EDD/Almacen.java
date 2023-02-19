@@ -12,7 +12,8 @@ public class Almacen {
     private String name;    
     private ProductList listaProductos;
     private AdjacentList listaAdyacencia;
-    private Almacen siguiente;
+    
+    private Almacen siguiente;//nodo
 
     public Almacen(String name) {
         this.name = name;

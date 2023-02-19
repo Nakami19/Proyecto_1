@@ -17,6 +17,13 @@ public class Product {
         this.quantity = quantity;
     }
 
+    
+    public String show() {
+        return this.name+" "+Integer.toString(this.quantity);
+    
+    }
+    
+    
     /**
      * @return the name
      */
