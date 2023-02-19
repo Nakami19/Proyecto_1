@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto.pkg1.EDD;
+package EDD;
 
 /**
  *
@@ -14,9 +14,9 @@ public class Almacen {
     private AdjacentList listaAdyacencia;
     private Almacen siguiente;
 
-    public Almacen(String name, ProductList listaProductos) {
+    public Almacen(String name) {
         this.name = name;
-        this.listaProductos = listaProductos;
+        this.listaProductos = new ProductList();
         this.listaAdyacencia = new AdjacentList();
         this.siguiente = null;
     }
