@@ -6,6 +6,7 @@ package Interfaz;
 
 import EDD.Almacen;
 import EDD.Grafo;
+import EDD.Product;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +37,7 @@ public class Interfaz extends javax.swing.JFrame {
         save_txt_button = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         Pedidos = new javax.swing.JPanel();
         Gestion_Almacenes = new javax.swing.JPanel();
@@ -52,6 +54,18 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         weight_input = new javax.swing.JTextField();
         insertarRuta_button = new javax.swing.JButton();
+        Gestion_Stock = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        almacen_input2 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        object_input = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        quantity_input = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,6 +91,14 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+
+        jButton3.setText("Gestion Stock");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 510));
 
@@ -144,6 +166,43 @@ public class Interfaz extends javax.swing.JFrame {
 
         Parent.add(Gestion_Almacenes, "card3");
 
+        Gestion_Stock.setBackground(new java.awt.Color(255, 255, 255));
+        Gestion_Stock.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setText("Gestión de Stock de los Almacenes");
+        Gestion_Stock.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+
+        jLabel9.setText("Aquí puede gestionar el Stock del almacén de su preferencia, introduzca el nombre del almacén al que quiere");
+        Gestion_Stock.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel10.setText("gestionarle el Stock, introduzca el nombre del producto a añadir, su cantidad, y presione el botón para");
+        Gestion_Stock.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jLabel11.setText("guardar los datos hechos.");
+        Gestion_Stock.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        jLabel12.setText("Introduzca el nombre del Almacén al que se le va a gestionar el stock:");
+        Gestion_Stock.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        Gestion_Stock.add(almacen_input2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 570, -1));
+
+        jLabel13.setText("Introduzca el nombre del Objeto que se va a introducir en el Stock del almacén:");
+        Gestion_Stock.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        Gestion_Stock.add(object_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 570, -1));
+
+        jLabel14.setText("Introduzca la cantidad del objeto que se va a introducir en el Stock del almacén:");
+        Gestion_Stock.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        Gestion_Stock.add(quantity_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 570, -1));
+
+        jButton4.setText("Añadir Objeto al Stock del Almacén");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        Gestion_Stock.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+
+        Parent.add(Gestion_Stock, "card4");
+
         getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 610, 510));
 
         pack();
@@ -178,6 +237,9 @@ public class Interfaz extends javax.swing.JFrame {
     private void insertarRuta_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarRuta_buttonActionPerformed
         if(origin_input.getText().isBlank() || destiny_input.getText().isBlank() || weight_input.getText().isBlank()){
             JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
+            origin_input.setText("");
+                destiny_input.setText("");
+                weight_input.setText("");
         }else{
             try{
                 Grafo grafo = Global.getGrafo();
@@ -187,16 +249,56 @@ public class Interfaz extends javax.swing.JFrame {
                 
                 if(grafo.existVertice(origin) && grafo.existVertice(destiny)){
                     grafo.newArista(origin, destiny, weight);
+                    origin_input.setText("");
+                    destiny_input.setText("");
+                    weight_input.setText("");
                 }else{
                     throw new IllegalArgumentException("Uno de los almacene que introdujo no existe");
                 }
             
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
-                
+                origin_input.setText("");
+                destiny_input.setText("");
+                weight_input.setText("");
             }
         }
     }//GEN-LAST:event_insertarRuta_buttonActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Parent.removeAll();
+        Parent.add(Gestion_Stock);
+        Parent.repaint();
+        Parent.revalidate();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(almacen_input2.getText().isBlank() || object_input.getText().isBlank() || quantity_input.getText().isBlank()){
+            JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
+            almacen_input2.setText("");
+            object_input.setText("");
+            quantity_input.setText("");
+        }else{
+            try{
+                Grafo grafo = Global.getGrafo();
+                Product producto = new Product(object_input.getText(), Integer.parseInt(quantity_input.getText()));
+                
+                Almacen almacen = grafo.getVertice(almacen_input2.getText());
+                
+                if(almacen == null){
+                    throw new IllegalArgumentException("Uno de los almacene que introdujo no existe");
+                }
+                
+                almacen.getListaProductos().insertEnd(producto);
+                
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Ingreso Inválido, asegúrese de que todos los valores estén correctos");
+                almacen_input2.setText("");
+                object_input.setText("");
+                quantity_input.setText("");
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,23 +337,36 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Gestion_Almacenes;
+    private javax.swing.JPanel Gestion_Stock;
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel Pedidos;
     private javax.swing.JTextField almacen_input;
+    private javax.swing.JTextField almacen_input2;
     private javax.swing.JTextField destiny_input;
     private javax.swing.JButton insertAlmacen_button;
     private javax.swing.JButton insertarRuta_button;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField object_input;
     private javax.swing.JTextField origin_input;
+    private javax.swing.JTextField quantity_input;
     private javax.swing.JButton save_txt_button;
     private javax.swing.JTextField weight_input;
     // End of variables declaration//GEN-END:variables

@@ -63,6 +63,19 @@ public class Grafo {
     return exist;
     }
     
+    public Almacen getVertice(String name){
+        if(grafoEmpty()){
+            return null;
+        }else{
+            for (Almacen pointer = getFirst();  pointer != null; pointer = pointer.getSiguiente()) {
+                if(pointer.getName().equals(name)){
+                    return pointer;
+                }
+            }
+            return null;
+        }
+    }
+    
     public void newArista(Almacen origin, Almacen destiny, int weight){
         if(existVertice(origin) && existVertice(destiny)){
             Almacen position = getFirst();
