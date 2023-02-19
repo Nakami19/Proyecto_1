@@ -25,9 +25,9 @@ public class Almacen {
     /**
      * @return the name
      */
-    public String getName() {
-        return name;
-    }
+   public String getName() {
+       return this.name;
+   }
 
     /**
      * @param name the name to set

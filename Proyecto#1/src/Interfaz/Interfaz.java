@@ -348,16 +348,19 @@ public class Interfaz extends javax.swing.JFrame {
                             }   
                         }
                     }
-                    System.out.println(grafo.printGrafo());
+                   
                     Almacen storage;
-                    for (int i = 0; i < eachroute.length; i++) {
-                        routeinfo=eachroute[i].split(",");
-                        storage=grafo.getVertice(routeinfo[0]);
-                        grafo.newArista(grafo.getVertice(routeinfo[0]), grafo.getVertice(routeinfo[1]), Integer.parseInt(routeinfo[2]));
-                        storage.getListaAdyacencia().newAdjacency(grafo.getVertice(routeinfo[1]), Integer.parseInt(routeinfo[2]));
-                        
-                    }
                     
+                    for (int k = 0; k < eachroute.length; k++) {
+                      
+                        routeinfo=eachroute[k].split(",");
+                        if(!routeinfo[0].isBlank()){
+                        storage=grafo.getVertice(routeinfo[0]);
+                         grafo.newArista(storage,grafo.getVertice(routeinfo[1]), Integer.parseInt(routeinfo[2]));
+                         storage.getListaAdyacencia().newAdjacency(grafo.getVertice(routeinfo[1]), Integer.parseInt(routeinfo[2]));
+                            
+                        }  
+                    }
                     System.out.println(grafo.printGrafo());
                 }
 
