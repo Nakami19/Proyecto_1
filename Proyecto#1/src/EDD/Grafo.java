@@ -87,9 +87,6 @@ public class Grafo {
         Almacen temp = getFirst();
         while (temp != null){
             cadena = cadena + temp.getName()+" -> "+temp.getListaAdyacencia().Imprimir()+"\n";
-            
-            cadena= cadena+"Almacen "+temp.getName()+"\n"+temp.getListaProductos().mostrar();
-            
             temp = temp.getSiguiente();
         } 
         return cadena;

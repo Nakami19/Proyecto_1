@@ -296,8 +296,8 @@ public class Interfaz extends javax.swing.JFrame {
             String path=archive.getAbsolutePath();
             
             if(!path.contains("txt")) {
-            System.out.println("HOLAAAAA");}
-            
+            JOptionPane.showMessageDialog(null, "Por favor elija un archivo del tipo txt");
+            }
             else{
             try {
                 File archivo = new File (path); 
@@ -316,7 +316,7 @@ public class Interfaz extends javax.swing.JFrame {
                 
                 fr.close();
                 br.close();
-                JOptionPane.showMessageDialog(null, complete);
+               
                 if(!"".equals(complete)) {
  
                     String[] info;
@@ -327,6 +327,9 @@ public class Interfaz extends javax.swing.JFrame {
                     String nombre[];
                     String letra;
                     Almacen alma;
+                    String[] routes=complete.split("Rutas;");
+                    String[] eachroute=routes[1].split("\n");
+                    String[] routeinfo;
 
                     for (int i = 0; i < todo.length; i++) {
                         if (todo[i].contains(":")) {
@@ -342,9 +345,19 @@ public class Interfaz extends javax.swing.JFrame {
                                   alma.getListaProductos().insertEnd(new Product(detalles[0],Integer.parseInt(detalles[1])));
                                }
 
-                            }
+                            }   
                         }
                     }
+                    System.out.println(grafo.printGrafo());
+                    Almacen storage;
+                    for (int i = 0; i < eachroute.length; i++) {
+                        routeinfo=eachroute[i].split(",");
+                        storage=grafo.getVertice(routeinfo[0]);
+                        grafo.newArista(grafo.getVertice(routeinfo[0]), grafo.getVertice(routeinfo[1]), Integer.parseInt(routeinfo[2]));
+                        storage.getListaAdyacencia().newAdjacency(grafo.getVertice(routeinfo[1]), Integer.parseInt(routeinfo[2]));
+                        
+                    }
+                    
                     System.out.println(grafo.printGrafo());
                 }
 
