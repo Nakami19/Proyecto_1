@@ -2,22 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package proyecto.pkg1;
-
-import proyecto.pkg1.Interfaz.Interfaz;
+package proyecto.pkg1.EDD;
 
 /**
  *
  * @author Tomas
  */
-public class Main {
+public class Grafos {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Interfaz ventana = new Interfaz();
-        ventana.setVisible(true);
+        // TODO code application logic here
     }
     
 }
