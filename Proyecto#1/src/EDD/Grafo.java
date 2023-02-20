@@ -92,7 +92,16 @@ public class Grafo {
         return cadena;
     }
     
+    public String saveroute() {
+            String cadena ="";
+        Almacen temp = getFirst();
+        while (temp != null){
+            cadena = cadena + temp.getName()+temp.getListaAdyacencia().Imprimir()+"\n";
+            temp = temp.getSiguiente();
+        } 
+        return cadena;
     
+    }
     
     /**
      * @return the first
