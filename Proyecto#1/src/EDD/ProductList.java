@@ -36,7 +36,6 @@ public class ProductList {
     Nodo<Product> aux=getHead();
     String cadena="";
         for (int i = 0; i < getSize(); i++) {
-            //cadena+=aux.getElement().mostrar()+"\n";
             cadena+=aux.getData().show()+"\n";
             aux=aux.getNext();
             

@@ -361,7 +361,7 @@ public class Interfaz extends javax.swing.JFrame {
                             
                         }  
                     }
-                    System.out.println(grafo.printGrafo());
+                    JOptionPane.showMessageDialog(null, "TxT cargado exitosamente");
                 }
 
               
