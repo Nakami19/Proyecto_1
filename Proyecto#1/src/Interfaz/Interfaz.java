@@ -432,6 +432,9 @@ public class Interfaz extends javax.swing.JFrame {
                 }
                 
                 almacen.getListaProductos().insertEnd(producto);
+                almacen_input2.setText("");
+                object_input.setText("");
+                quantity_input.setText("");
                 
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Ingreso Inválido, asegúrese de que todos los valores estén correctos");
@@ -509,7 +512,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void insertarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarRutaActionPerformed
         if (Global.getGrafo().getFirst()!=null){
 
-            if(origin_input3.getText().isBlank() || destiny_input3.getText().isBlank() || weight_input.getText().isBlank()){
+            if(origin_input3.getText().isBlank() || destiny_input3.getText().isBlank() || weight_input3.getText().isBlank()){
                 JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
                 origin_input3.setText("");
                 destiny_input3.setText("");
@@ -519,13 +522,13 @@ public class Interfaz extends javax.swing.JFrame {
                     Grafo grafo = Global.getGrafo();
                     Almacen origin = new Almacen(origin_input3.getText());
                     Almacen destiny = new Almacen(destiny_input3.getText());
-                    int weight = Integer.parseInt(weight_input.getText());
+                    int weight = Integer.parseInt(weight_input3.getText());
 
                     if(grafo.existVertice(origin) && grafo.existVertice(destiny)){
                         grafo.newArista(origin, destiny, weight);
                         origin_input3.setText("");
                         destiny_input3.setText("");
-                        weight_input.setText("");
+                        weight_input3.setText("");
                     }else{
                         throw new IllegalArgumentException("Uno de los almacene que introdujo no existe");
                     }
@@ -534,7 +537,7 @@ public class Interfaz extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
                     origin_input3.setText("");
                     destiny_input3.setText("");
-                    weight_input.setText("");
+                    weight_input3.setText("");
                 }
             }}else{
                 JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes de registrar un almacen");
