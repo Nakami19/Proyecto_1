@@ -49,11 +49,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        save_txt_button = new javax.swing.JButton();
+        load_txt_button = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         almacen = new javax.swing.JButton();
         ruta = new javax.swing.JButton();
+        save_txt_button = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         Pedidos = new javax.swing.JPanel();
         Gestion_Stock = new javax.swing.JPanel();
@@ -101,13 +102,13 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        save_txt_button.setText("Cargar Txt");
-        save_txt_button.addActionListener(new java.awt.event.ActionListener() {
+        load_txt_button.setText("Cargar Txt");
+        load_txt_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save_txt_buttonActionPerformed(evt);
+                load_txt_buttonActionPerformed(evt);
             }
         });
-        jPanel1.add(save_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel1.add(load_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jButton2.setText("Pedidos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +141,14 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 110, -1));
+
+        save_txt_button.setText("Guardar en Txt");
+        save_txt_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_txt_buttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(save_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 510));
 
@@ -293,7 +302,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
-    private void save_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_txt_buttonActionPerformed
+    private void load_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_txt_buttonActionPerformed
         JFileChooser file = new JFileChooser();
         
          FileNameExtensionFilter filter = new FileNameExtensionFilter(".TXT","txt");
@@ -388,7 +397,7 @@ public class Interfaz extends javax.swing.JFrame {
         
         
         }
-    }//GEN-LAST:event_save_txt_buttonActionPerformed
+    }//GEN-LAST:event_load_txt_buttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Parent.removeAll();
@@ -524,6 +533,10 @@ public class Interfaz extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_insertarRutaActionPerformed
 
+    private void save_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_txt_buttonActionPerformed
+        
+    }//GEN-LAST:event_save_txt_buttonActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -598,6 +611,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton load_txt_button;
     private javax.swing.JTextField object_input;
     private javax.swing.JTextField origin_input3;
     private javax.swing.JTextField quantity_input;
