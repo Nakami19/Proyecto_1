@@ -32,16 +32,19 @@ public class ProductList {
         return node;
     }
     
-    public String mostrar() {
+     public String mostrar() {
     Nodo<Product> aux=getHead();
     String cadena="";
         for (int i = 0; i < getSize(); i++) {
-            cadena+=aux.getData().show()+"\n";
-            aux=aux.getNext();
+            if(i==getSize()-1) {
+                cadena+=aux.getData().show()+";"+"\n";
             
+            } else{
+            cadena+=aux.getData().show()+"\n";}
+            aux=aux.getNext();
         }
+        
         return cadena;
-    
     }
 
     

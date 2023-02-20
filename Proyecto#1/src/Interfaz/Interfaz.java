@@ -327,6 +327,7 @@ public class Interfaz extends javax.swing.JFrame {
             File archive=file.getSelectedFile();
             
             String path=archive.getAbsolutePath();
+            setPath(path);
             
             if(!path.contains("txt")) {
             JOptionPane.showMessageDialog(null, "Por favor elija un archivo del tipo txt");
@@ -349,7 +350,7 @@ public class Interfaz extends javax.swing.JFrame {
                 
                 fr.close();
                 br.close();
-               
+
                 if(!"".equals(complete)) {
  
                     String[] info;
