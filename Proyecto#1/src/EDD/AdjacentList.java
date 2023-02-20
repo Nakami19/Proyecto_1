@@ -104,17 +104,17 @@ public class AdjacentList {
         return cadena;
     }
     
-    public String saveroute() {
+    public String saveroute(String name) {
             String cadena ="";
         Route temp = getFirst();
         while (temp != null){
-            cadena = cadena+" "+","+ temp.getDestiny().getName()+","+ Integer.toString(temp.getWeight())+" ";
+            cadena = cadena+name+","+temp.getDestiny().getName()+","+ Integer.toString(temp.getWeight())+"\n";
             temp = temp.getSiguiente();
         }
         return cadena;
-    
-    
+
     }
+    
     
     
 }

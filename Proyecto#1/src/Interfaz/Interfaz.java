@@ -11,6 +11,7 @@ import EDD.Product;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -23,7 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Tomas
  */
 public class Interfaz extends javax.swing.JFrame {
-
+    private String path;
     /**
      * Creates new form Interfaz
      */
@@ -37,7 +38,18 @@ public class Interfaz extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.path=null;
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -310,7 +322,6 @@ public class Interfaz extends javax.swing.JFrame {
         file.setFileFilter(filter);
         int selection=file.showOpenDialog(this);
 
-        //empieza a actuar si el usuario le da a aceptar
         if (selection==JFileChooser.APPROVE_OPTION) {
             
             File archive=file.getSelectedFile();
@@ -388,15 +399,11 @@ public class Interfaz extends javax.swing.JFrame {
 
               
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erorr!!!! Asegurate de haber cargado el archivo correcto");
             }
-            
-        
-            }
-
-        
-        
-        
         }
+
+      }
     }//GEN-LAST:event_load_txt_buttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -534,7 +541,23 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_insertarRutaActionPerformed
 
     private void save_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_txt_buttonActionPerformed
-        
+       Grafo grafo = Global.getGrafo();
+       
+       String almacenes=grafo.saveproducts();
+       String rutas=grafo.saveroute();
+       String todo=almacenes+rutas;
+       todo=todo.trim();
+       
+             try {
+            if(getPath()!=null) {
+            PrintWriter pw=new PrintWriter(getPath());
+            pw.print(todo);
+            pw.close();
+            JOptionPane.showMessageDialog(null, "Guardado exitoso");}
+            else{JOptionPane.showMessageDialog(null, "Error!! Primero debe cargar un archivo txt");}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error!!!!!");
+        } 
     }//GEN-LAST:event_save_txt_buttonActionPerformed
 
 

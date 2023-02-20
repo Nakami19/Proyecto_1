@@ -92,15 +92,25 @@ public class Grafo {
         return cadena;
     }
     
-    public String saveroute() {
-            String cadena ="";
+   public String saveroute() {
+            String cadena ="Rutas;\n";
         Almacen temp = getFirst();
         while (temp != null){
-            cadena = cadena + temp.getName()+temp.getListaAdyacencia().Imprimir()+"\n";
+            cadena = cadena+temp.getListaAdyacencia().saveroute(temp.getName());
             temp = temp.getSiguiente();
         } 
         return cadena;
     
+    }
+   
+    public String saveproducts() {
+        String almacenes="Almacenes;\n";
+        Almacen temp = getFirst();
+          while (temp != null){
+            almacenes+="Almacen "+temp.getName()+":"+"\n"+ temp.getListaProductos().mostrar();
+            temp = temp.getSiguiente();
+        } 
+        return almacenes;
     }
     
     /**

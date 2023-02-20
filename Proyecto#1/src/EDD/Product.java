@@ -19,7 +19,7 @@ public class Product {
 
     
     public String show() {
-        return this.name+" "+Integer.toString(this.quantity);
+        return this.name+","+Integer.toString(this.quantity);
     
     }
     
