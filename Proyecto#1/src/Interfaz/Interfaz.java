@@ -7,7 +7,7 @@ package Interfaz;
 import EDD.Almacen;
 import EDD.Grafo;
 import EDD.Product;
-
+import EDD.Funciones;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -97,6 +97,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         Route = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -225,8 +226,8 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1.setText("Gestión de Almacenes");
         Almacen.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
-        jLabel2.setText("Introduzca el nombre del almacen que desea añadir:");
-        Almacen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jLabel2.setText("(no puede contener caracteres numéricos y debe ser de una letra):");
+        Almacen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         almacen_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +245,7 @@ public class Interfaz extends javax.swing.JFrame {
         Almacen.add(insertAlmacen_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, -1, -1));
 
         jLabel3.setText("Añadir Almacenes:");
-        Almacen.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        Almacen.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel4.setText("Añadir Rutas de Entrada:");
         Almacen.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 250, -1));
@@ -267,6 +268,9 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel17.setText("Introduzca la distancia entre los dos almacenes");
         Almacen.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+
+        jLabel6.setText("Introduzca el nombre del almacen que desea añadir :");
+        Almacen.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         Parent.add(Almacen, "card3");
 
@@ -372,17 +376,21 @@ public class Interfaz extends javax.swing.JFrame {
                           letra=nombre[1];
                           alma=new Almacen(letra);
                           grafo.newNode(alma);
-                          info=almacenes[1].split("\n");
+
+                            info=almacenes[1].split("\n");
+
                               for (int j = 0; j < info.length; j++) {
                                detalles=info[j].split(",");
+
                                if(detalles.length>1) {
                                   alma.getListaProductos().insertEnd(new Product(detalles[0],Integer.parseInt(detalles[1])));
+
                                }
 
                             }   
                         }
                     }
-                   
+
                     Almacen storage;
                     
                     for (int k = 0; k < eachroute.length; k++) {
@@ -415,14 +423,24 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Funciones funciones=new Funciones();
+        
         if(almacen_input2.getText().isBlank() || object_input.getText().isBlank() || quantity_input.getText().isBlank()){
             JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
             almacen_input2.setText("");
             object_input.setText("");
             quantity_input.setText("");
-        }else{
+            
+        }
+        else if(!funciones.isalpha(object_input.getText())) {
+            JOptionPane.showMessageDialog(null, "Ingrese un nombre de producto sin caracteres numericos");
+            object_input.setText("");
+        }
+        else{
             try{
                 Grafo grafo = Global.getGrafo();
+                
+                
                 Product producto = new Product(object_input.getText(), Integer.parseInt(quantity_input.getText()));
                 
                 Almacen almacen = grafo.getVertice(almacen_input2.getText());
@@ -432,6 +450,7 @@ public class Interfaz extends javax.swing.JFrame {
                 }
                 
                 almacen.getListaProductos().insertEnd(producto);
+                JOptionPane.showMessageDialog(null, "Producto agregado exitosamente");
                 almacen_input2.setText("");
                 object_input.setText("");
                 quantity_input.setText("");
@@ -466,44 +485,61 @@ public class Interfaz extends javax.swing.JFrame {
     private void insertAlmacen_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertAlmacen_buttonActionPerformed
         String data ="";
         if (Global.getGrafo().getFirst()!=null){
-            if(almacen_input.getText().isBlank()){
+            Funciones funciones=new Funciones();
+            if(almacen_input.getText().isBlank()|| !funciones.isalpha(almacen_input.getText())){
                 JOptionPane.showMessageDialog(null, "Ingreso Inválido, por favor ingrese el nombre del Almacén");
-            }else{
+                almacen_input.setText("");
+            }
+            else if(almacen_input.getText().length()>1) {
+                JOptionPane.showMessageDialog(null, "Ingreso Inválido, por favor ingrese el nombre del Almacén");
+                almacen_input.setText("");
+            }
+            else{
                 Grafo grafo = Global.getGrafo();
                 data = almacen_input.getText();
                 Almacen almacen = new Almacen(data);
+
                 grafo.newNode(almacen);
-            }
-            if(salida_input.getText().isBlank() || entrada_input.getText().isBlank() || weight_input.getText().isBlank()){
-                JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
+            
+                if(salida_input.getText().isBlank() || entrada_input.getText().isBlank() || weight_input.getText().isBlank()){
+                    JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
 
-            }else{
-                try{
-                    data = almacen_input.getText();
-                    Grafo grafo1 = Global.getGrafo();
-                    Grafo grafo2 = Global.getGrafo();
-                    Almacen origin1 = new Almacen(data);
-                    Almacen destiny1 = new Almacen(salida_input.getText());
-                    int weight1 = Integer.parseInt(weight_input.getText());
-                    Almacen origin2 = new Almacen(entrada_input.getText());
-                    Almacen destiny2 = new Almacen(data);
-                    int weight2 = Integer.parseInt(weight_input2.getText());
+                }else{
+                    try{
+                        if (grafo.existVertice(almacen)) {throw new Exception("El almacen que desea crear ya existe");}
+                        
+                        
+                        data = almacen_input.getText();
+                        Grafo grafo1 = Global.getGrafo();
+                        Grafo grafo2 = Global.getGrafo();
+                        Almacen origin1 = new Almacen(data);
+                        Almacen destiny1 = new Almacen(salida_input.getText());
+                        int weight1 = Integer.parseInt(weight_input.getText());
+                        Almacen origin2 = new Almacen(entrada_input.getText());
+                        Almacen destiny2 = new Almacen(data);
+                        int weight2 = Integer.parseInt(weight_input2.getText());
 
-                    if(grafo2.existVertice(origin2) && grafo2.existVertice(destiny2) && grafo1.existVertice(origin1) && grafo1.existVertice(destiny1)){
-                        grafo2.newArista(origin2, destiny2, weight2);
-                        grafo1.newArista(origin1, destiny1, weight1);
-                        JOptionPane.showMessageDialog(null, "registrados exitosamente CRACK");
-                        almacen_input.setText("");
+                        if(grafo2.existVertice(origin2) && grafo2.existVertice(destiny2) && grafo1.existVertice(origin1) && grafo1.existVertice(destiny1)){
+                            grafo2.newArista(origin2, destiny2, weight2);
+                            grafo1.newArista(origin1, destiny1, weight1);
+                            JOptionPane.showMessageDialog(null, "registrados exitosamente CRACK");
+                            almacen_input.setText("");
+                            salida_input.setText("");
+                            entrada_input.setText("");
+                            weight_input.setText("");
+                            weight_input2.setText("");
 
-                    }else{
-                        throw new IllegalArgumentException("Uno de los almacene que introdujo no existe");
+                        }else{
+                            throw new IllegalArgumentException("Uno de los almacene que introdujo no existe");
+                        }
+
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null, "Ingreso inválido de datos de la ruta, asegúrese de que todos los valores estén correctos");
+
                     }
-
-                }catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Ingreso inválido de datos de la ruta, asegúrese de que todos los valores estén correctos");
-
-                }
             }
+            }
+            
         }else{
             JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes de registrar un almacen");
         }
@@ -529,6 +565,7 @@ public class Interfaz extends javax.swing.JFrame {
                         origin_input3.setText("");
                         destiny_input3.setText("");
                         weight_input3.setText("");
+                        JOptionPane.showMessageDialog(null, "Ruta registrada exitosamente");
                     }else{
                         throw new IllegalArgumentException("Uno de los almacene que introdujo no existe");
                     }
@@ -634,6 +671,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

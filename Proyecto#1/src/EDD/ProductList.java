@@ -22,8 +22,13 @@ public class ProductList {
         if (isEmpty()) {
             setHead(node);
         } else {
-            Nodo pointer = getHead();
+            Nodo <Product>pointer = getHead();
             while (pointer.getNext() != null) {
+                if(pointer.getData().getName().equalsIgnoreCase(node.getData().getName())) {
+                    pointer.getData().setQuantity(pointer.getData().getQuantity()+node.getData().getQuantity());
+                    return node;
+                }
+                
                 pointer = pointer.getNext();
             }
             pointer.setNext(node);
@@ -38,8 +43,9 @@ public class ProductList {
         for (int i = 0; i < getSize(); i++) {
             if(i==getSize()-1) {
                 cadena+=aux.getData().show()+";"+"\n";
-            
-            } else{
+    
+            }
+            else{
             cadena+=aux.getData().show()+"\n";}
             aux=aux.getNext();
         }

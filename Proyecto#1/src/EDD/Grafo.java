@@ -107,9 +107,12 @@ public class Grafo {
         String almacenes="Almacenes;\n";
         Almacen temp = getFirst();
           while (temp != null){
-            almacenes+="Almacen "+temp.getName()+":"+"\n"+ temp.getListaProductos().mostrar();
+            if(temp.getListaProductos().getHead()==null) {
+                almacenes+="Almacen "+temp.getName()+":"+"\n"+";"+"\n";
+            }
+            else{ almacenes+="Almacen "+temp.getName()+":"+"\n"+ temp.getListaProductos().mostrar();}
             temp = temp.getSiguiente();
-        } 
+          } 
         return almacenes;
     }
     
