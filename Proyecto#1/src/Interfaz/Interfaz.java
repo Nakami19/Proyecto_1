@@ -573,10 +573,13 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_almacenActionPerformed
 
     private void rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaActionPerformed
+        Grafo grafo = Global.getGrafo();
         Parent.removeAll();
         Parent.add(Route);
         Parent.repaint();
         Parent.revalidate();
+        grafo.grafoDijsktra("A");
+        System.out.println(grafo.getVertice("E").getdPrevious());
     }//GEN-LAST:event_rutaActionPerformed
 
     private void almacen_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacen_inputActionPerformed
@@ -723,7 +726,8 @@ public class Interfaz extends javax.swing.JFrame {
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
         Grafo grafo = Global.getGrafo();
         if (Global.getGrafo().getFirst()!=null){
-        pantalla_BFS_DFS.setText(grafo.BFS().printBFS_DFS());
+        String entada = grafo.getFirst().getName();
+        pantalla_BFS_DFS.setText(grafo.BFS(entada).printBFS_DFS());
         }else{
         JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes realizar el reporte");}
     }//GEN-LAST:event_BFSActionPerformed
@@ -731,7 +735,8 @@ public class Interfaz extends javax.swing.JFrame {
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
         Grafo grafo = Global.getGrafo();
         if (Global.getGrafo().getFirst()!=null){
-        pantalla_BFS_DFS.setText(grafo.DFS().printBFS_DFS());
+        String entada = grafo.getFirst().getName();
+        pantalla_BFS_DFS.setText(grafo.DFS(entada).printBFS_DFS());
         }else{
         JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes realizar el reporte");}    }//GEN-LAST:event_DFSActionPerformed
 

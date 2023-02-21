@@ -12,6 +12,8 @@ public class Almacen {
     private String name;    
     private ProductList listaProductos;
     private AdjacentList listaAdyacencia;
+    private String dPrevious; 
+    private int dPeso;
     
     private Almacen siguiente;//nodo
 
@@ -20,6 +22,24 @@ public class Almacen {
         this.listaProductos = new ProductList();
         this.listaAdyacencia = new AdjacentList();
         this.siguiente = null;
+        this.dPrevious= "";
+        this.dPeso=0;
+    }
+
+    public String getdPrevious() {
+        return dPrevious;
+    }
+
+    public void setdPrevious(String dPrevious) {
+        this.dPrevious = dPrevious;
+    }
+
+    public int getdPeso() {
+        return dPeso;
+    }
+
+    public void setdPeso(int dPeso) {
+        this.dPeso = dPeso;
     }
 
     /**

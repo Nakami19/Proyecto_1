@@ -116,11 +116,11 @@ public class Grafo {
           } 
         return almacenes;
     }
-        public Grafo BFS(){
+        public Grafo BFS(String entrada){
         Grafo grafo = Global.getGrafo();
         Grafo cola = new Grafo();
         Grafo bfs = new Grafo();
-        Almacen origen= grafo.getFirst();
+        Almacen origen= grafo.getVertice(entrada);
         String visitado = origen.getName();
         Route destino = origen.getListaAdyacencia().getFirst();
         bfs.insertFinal(origen);
@@ -129,24 +129,28 @@ public class Grafo {
             if (!visitado.contains(destino.getDestiny().getName())){
             cola.insertFinal(destino.getDestiny());}
             destino = destino.getSiguiente();
+         
             
             if (destino == null && cola.getFirst()!=null){
                 origen = grafo.getVertice(cola.getFirst().getName());
                 destino = origen.getListaAdyacencia().getFirst();
-                bfs.insertFinal(origen);
-                visitado += bfs.getLast().getName();
+                if (!visitado.contains(origen.getName())){
+                bfs.insertFinal(origen);}
+                visitado += bfs.getLast().getName();                    
+                
                 cola.deleteBegin();
 
             }
             }
+            System.out.println(bfs.printGrafo());
         return bfs;  
     }
     
-        public Grafo DFS(){
+        public Grafo DFS(String entrada){
         Grafo grafo = Global.getGrafo();
         Grafo pila = new Grafo();
         Grafo dfs = new Grafo();
-        Almacen origen= grafo.getFirst();
+        Almacen origen= grafo.getVertice(entrada);
         String visitado = origen.getName();
         Route destino = origen.getListaAdyacencia().getFirst();
         dfs.insertFinal(origen);
@@ -166,6 +170,70 @@ public class Grafo {
             }
             }
         return dfs;  
+    }
+        
+    public void grafoDijsktra(String entrada){
+        Grafo grafo = Global.getGrafo();
+        grafo.pesoDijsktrra();
+        Grafo orden = grafo.BFS(entrada);
+        Almacen origen = orden.getVertice(entrada);
+        Route destino = grafo.getVertice(origen.getName()).getListaAdyacencia().getFirst();
+        origen.setdPrevious(entrada);
+        origen.setdPeso(0);
+        grafo.getVertice(entrada).setdPrevious(entrada);
+        grafo.getVertice(entrada).setdPeso(0);
+
+        while (origen!=null && destino !=null){
+            if (origen.getdPeso()==0){  
+                grafo.getVertice(destino.getDestiny().getName()).setdPeso(destino.getWeight());
+                orden.getVertice(destino.getDestiny().getName()).setdPeso(grafo.getVertice(destino.getDestiny().getName()).getdPeso());
+                grafo.getVertice(destino.getDestiny().getName()).setdPrevious(entrada);
+                orden.getVertice(destino.getDestiny().getName()).setdPrevious(grafo.getVertice(entrada).getName());
+                
+            }
+            if (origen.getdPeso() + destino.getWeight() < grafo.getVertice(destino.getDestiny().getName()).getdPeso() && origen.getdPeso()!=0){
+                grafo.getVertice(destino.getDestiny().getName()).setdPeso(origen.getdPeso()+ destino.getWeight());
+                orden.getVertice(destino.getDestiny().getName()).setdPeso(grafo.getVertice(destino.getDestiny().getName()).getdPeso());
+                grafo.getVertice(destino.getDestiny().getName()).setdPrevious(origen.getName());
+                orden.getVertice(destino.getDestiny().getName()).setdPrevious(grafo.getVertice(origen.getName()).getName());
+                
+            }
+            
+            destino = destino.getSiguiente();
+            if (destino == null){
+                origen = origen.getSiguiente();
+            if (origen!=null){
+                destino = grafo.getVertice(origen.getName()).getListaAdyacencia().getFirst();}
+}
+        } 
+    }        
+        
+    public void pesoDijsktrra(){
+        Grafo grafo = Global.getGrafo();
+        Almacen nodito = grafo.getFirst();
+        int peso= 0;
+        Route destino = nodito.getListaAdyacencia().getFirst();
+        while (nodito != null && destino!=null){
+            peso+=destino.getWeight();
+            destino = destino.getSiguiente();
+            if (destino == null){
+                nodito = nodito.getSiguiente();
+            if (nodito!=null){
+                destino = nodito.getListaAdyacencia().getFirst();
+            }
+        }}
+        if (nodito == null){
+        nodito = grafo.getFirst();
+        while (nodito!=null){
+            nodito.setdPeso(peso);
+            nodito = nodito.getSiguiente();
+        }
+  
+    }
+    }
+    
+    public String printDijkstra(){
+        return "en espera aun";
     }
         
     public void insertFinal(Almacen dato) {
