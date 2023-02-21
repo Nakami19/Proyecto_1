@@ -499,16 +499,17 @@ public class Interfaz extends javax.swing.JFrame {
                 data = almacen_input.getText();
                 Almacen almacen = new Almacen(data);
 
-                grafo.newNode(almacen);
+                
             
                 if(salida_input.getText().isBlank() || entrada_input.getText().isBlank() || weight_input.getText().isBlank()){
                     JOptionPane.showMessageDialog(null, "Ingreso inválido, asegúrese de que todos los valores estén correctos");
-
-                }else{
+                        
+                }
+                else if (grafo.existVertice(almacen)){ JOptionPane.showMessageDialog(null, "El almacen ingresado ya existe");}
+                
+                else{
                     try{
-                        if (grafo.existVertice(almacen)) {throw new Exception("El almacen que desea crear ya existe");}
-                        
-                        
+                        grafo.newNode(almacen);
                         data = almacen_input.getText();
                         Grafo grafo1 = Global.getGrafo();
                         Grafo grafo2 = Global.getGrafo();
