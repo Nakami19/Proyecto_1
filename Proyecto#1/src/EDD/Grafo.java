@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package EDD;
+import Interfaz.Global;
 
 /**
  *
@@ -115,7 +116,110 @@ public class Grafo {
           } 
         return almacenes;
     }
+        public Grafo BFS(){
+        Grafo grafo = Global.getGrafo();
+        Grafo cola = new Grafo();
+        Grafo bfs = new Grafo();
+        Almacen origen= grafo.getFirst();
+        String visitado = origen.getName();
+        Route destino = origen.getListaAdyacencia().getFirst();
+        bfs.insertFinal(origen);
+
+        while (origen !=null && destino !=null){
+            if (!visitado.contains(destino.getDestiny().getName())){
+            cola.insertFinal(destino.getDestiny());}
+            destino = destino.getSiguiente();
+            
+            if (destino == null && cola.getFirst()!=null){
+                origen = grafo.getVertice(cola.getFirst().getName());
+                destino = origen.getListaAdyacencia().getFirst();
+                bfs.insertFinal(origen);
+                visitado += bfs.getLast().getName();
+                cola.deleteBegin();
+
+            }
+            }
+        return bfs;  
+    }
     
+        public Grafo DFS(){
+        Grafo grafo = Global.getGrafo();
+        Grafo pila = new Grafo();
+        Grafo dfs = new Grafo();
+        Almacen origen= grafo.getFirst();
+        String visitado = origen.getName();
+        Route destino = origen.getListaAdyacencia().getFirst();
+        dfs.insertFinal(origen);
+
+        while (origen !=null && destino !=null){
+            if (!visitado.contains(destino.getDestiny().getName())){
+            pila.insertFinal(destino.getDestiny());}
+            destino = destino.getSiguiente();
+            
+            if (destino == null && pila.getLast()!=null){
+                origen = grafo.getVertice(pila.getLast().getName());
+                destino = origen.getListaAdyacencia().getFirst();
+                dfs.insertFinal(origen);
+                visitado += dfs.getLast().getName();
+                pila.deleteFinal();
+
+            }
+            }
+        return dfs;  
+    }
+        
+    public void insertFinal(Almacen dato) {
+        Almacen node = new Almacen(dato.getName());
+        
+        if (grafoEmpty()) {
+            setFirst(node);
+            setLast(node);
+        } else { 
+        Almacen aux =getLast();
+        aux.setSiguiente(node);
+        setLast(node);
+        } 
+}
+    public void deleteFinal(){
+        if (!grafoEmpty()){
+            Almacen pointer = getFirst();
+            if (getFirst() == getLast()) {
+                setFirst(null);
+                setLast(null);
+
+            } else {
+                while (pointer.getSiguiente() != null && pointer.getSiguiente().getSiguiente() != null){
+                    pointer = pointer.getSiguiente();
+                }
+                pointer.setSiguiente(null);
+                setLast(pointer);
+
+            }
+        }
+        
+    }
+
+    public void deleteBegin(){
+        if (!grafoEmpty()){
+            Almacen pointer = getFirst();
+            setFirst(pointer.getSiguiente());
+            pointer.setSiguiente(null);
+        if (getFirst() == getLast()) {
+                setFirst(null);
+                setLast(null);}
+        }
+    }  
+    
+    public String printBFS_DFS(){
+        Grafo grafo = Global.getGrafo();
+        String cadena ="";
+        Almacen temp = getFirst();
+        while (temp != null){
+            cadena += "Almacen "+grafo.getVertice(temp.getName()).getName()+":"+"\n"+grafo.getVertice(temp.getName()).getListaProductos().mostrar()+"\n";
+            temp = temp.getSiguiente();
+        } 
+        return cadena;
+    }
     /**
      * @return the first
      */

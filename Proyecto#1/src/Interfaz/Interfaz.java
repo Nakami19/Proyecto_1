@@ -68,6 +68,7 @@ public class Interfaz extends javax.swing.JFrame {
         ruta = new javax.swing.JButton();
         save_txt_button = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        reporte = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         Pedidos = new javax.swing.JPanel();
         Gestion_Stock = new javax.swing.JPanel();
@@ -110,9 +111,15 @@ public class Interfaz extends javax.swing.JFrame {
         weight_input3 = new javax.swing.JTextField();
         insertarRuta = new javax.swing.JButton();
         ShowGrafo = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Salida = new javax.swing.JTextArea();
+        BFS_DFS = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        pantalla_BFS_DFS = new javax.swing.JTextArea();
+        BFS = new javax.swing.JButton();
+        DFS = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -175,6 +182,14 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+
+        reporte.setText("Reporte");
+        reporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reporteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 100, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 510));
 
@@ -321,8 +336,8 @@ public class Interfaz extends javax.swing.JFrame {
         ShowGrafo.setBackground(new java.awt.Color(255, 255, 255));
         ShowGrafo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setText("Mostrar Grafo");
-        ShowGrafo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 6, -1, -1));
+        jLabel23.setText("Mostrar Grafo");
+        ShowGrafo.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 6, -1, -1));
 
         Salida.setColumns(20);
         Salida.setRows(5);
@@ -331,6 +346,65 @@ public class Interfaz extends javax.swing.JFrame {
         ShowGrafo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 570, 450));
 
         Parent.add(ShowGrafo, "card6");
+
+        pantalla_BFS_DFS.setEditable(false);
+        pantalla_BFS_DFS.setColumns(20);
+        pantalla_BFS_DFS.setRows(5);
+        pantalla_BFS_DFS.setFocusable(false);
+        jScrollPane2.setViewportView(pantalla_BFS_DFS);
+
+        BFS.setText("Mostrar por recorrido BFS");
+        BFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BFSActionPerformed(evt);
+            }
+        });
+
+        DFS.setText("Mostrar por recorrido DFS");
+        DFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DFSActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel24.setText("Reportes De Disponibilidad Por Almacenes");
+
+        javax.swing.GroupLayout BFS_DFSLayout = new javax.swing.GroupLayout(BFS_DFS);
+        BFS_DFS.setLayout(BFS_DFSLayout);
+        BFS_DFSLayout.setHorizontalGroup(
+            BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BFS_DFSLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BFS_DFSLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(54, Short.MAX_VALUE))
+                    .addGroup(BFS_DFSLayout.createSequentialGroup()
+                        .addComponent(BFS, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DFS, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BFS_DFSLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
+        );
+        BFS_DFSLayout.setVerticalGroup(
+            BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BFS_DFSLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BFS)
+                    .addComponent(DFS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+
+        Parent.add(BFS_DFS, "card7");
 
         getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 610, 510));
 
@@ -640,6 +714,27 @@ public class Interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void reporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteActionPerformed
+        Parent.removeAll();
+        Parent.add(BFS_DFS);
+        Parent.repaint();
+        Parent.revalidate();    }//GEN-LAST:event_reporteActionPerformed
+
+    private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
+        Grafo grafo = Global.getGrafo();
+        if (Global.getGrafo().getFirst()!=null){
+        pantalla_BFS_DFS.setText(grafo.BFS().printBFS_DFS());
+        }else{
+        JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes realizar el reporte");}
+    }//GEN-LAST:event_BFSActionPerformed
+
+    private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
+        Grafo grafo = Global.getGrafo();
+        if (Global.getGrafo().getFirst()!=null){
+        pantalla_BFS_DFS.setText(grafo.DFS().printBFS_DFS());
+        }else{
+        JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes realizar el reporte");}    }//GEN-LAST:event_DFSActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -681,6 +776,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Almacen;
+    private javax.swing.JButton BFS;
+    private javax.swing.JPanel BFS_DFS;
+    private javax.swing.JButton DFS;
     private javax.swing.JPanel Gestion_Stock;
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel Pedidos;
@@ -713,6 +811,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -722,10 +822,13 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton load_txt_button;
     private javax.swing.JTextField object_input;
     private javax.swing.JTextField origin_input3;
+    private javax.swing.JTextArea pantalla_BFS_DFS;
     private javax.swing.JTextField quantity_input;
+    private javax.swing.JButton reporte;
     private javax.swing.JButton ruta;
     private javax.swing.JTextField salida_input;
     private javax.swing.JButton save_txt_button;
