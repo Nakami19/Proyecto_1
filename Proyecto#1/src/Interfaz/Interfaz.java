@@ -67,6 +67,7 @@ public class Interfaz extends javax.swing.JFrame {
         almacen = new javax.swing.JButton();
         ruta = new javax.swing.JButton();
         save_txt_button = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         Pedidos = new javax.swing.JPanel();
         Gestion_Stock = new javax.swing.JPanel();
@@ -108,6 +109,10 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         weight_input3 = new javax.swing.JTextField();
         insertarRuta = new javax.swing.JButton();
+        ShowGrafo = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Salida = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,6 +167,14 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(save_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+
+        jButton1.setText("Mostrar grafo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 510));
 
@@ -304,6 +317,20 @@ public class Interfaz extends javax.swing.JFrame {
         Route.add(insertarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, -1));
 
         Parent.add(Route, "card4");
+
+        ShowGrafo.setBackground(new java.awt.Color(255, 255, 255));
+        ShowGrafo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("Mostrar Grafo");
+        ShowGrafo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 6, -1, -1));
+
+        Salida.setColumns(20);
+        Salida.setRows(5);
+        jScrollPane1.setViewportView(Salida);
+
+        ShowGrafo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 570, 450));
+
+        Parent.add(ShowGrafo, "card6");
 
         getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 610, 510));
 
@@ -602,6 +629,17 @@ public class Interfaz extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_save_txt_buttonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Parent.removeAll();
+        Parent.add(ShowGrafo);
+        Parent.repaint();
+        Parent.revalidate();
+        Salida.setText("");
+        Grafo grafo = Global.getGrafo();           
+        Salida.setText(grafo.printGrafo());
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -629,6 +667,9 @@ public class Interfaz extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -644,6 +685,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel Pedidos;
     private javax.swing.JPanel Route;
+    private javax.swing.JTextArea Salida;
+    private javax.swing.JPanel ShowGrafo;
     private javax.swing.JButton almacen;
     private javax.swing.JTextField almacen_input;
     private javax.swing.JTextField almacen_input2;
@@ -651,6 +694,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField entrada_input;
     private javax.swing.JButton insertAlmacen_button;
     private javax.swing.JButton insertarRuta;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -677,6 +721,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton load_txt_button;
     private javax.swing.JTextField object_input;
     private javax.swing.JTextField origin_input3;
