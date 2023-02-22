@@ -142,7 +142,6 @@ public class Grafo {
 
             }
             }
-            System.out.println(bfs.printGrafo());
         return bfs;  
     }
     

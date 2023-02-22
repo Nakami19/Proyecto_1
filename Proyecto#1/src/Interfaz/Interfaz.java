@@ -8,6 +8,8 @@ import EDD.Almacen;
 import EDD.Grafo;
 import EDD.Product;
 import EDD.Funciones;
+import EDD.Nodo;
+import EDD.ProductList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -62,7 +64,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         load_txt_button = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Boton_pedidos = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         almacen = new javax.swing.JButton();
         ruta = new javax.swing.JButton();
@@ -70,7 +72,20 @@ public class Interfaz extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         reporte = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
+        Inicio = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         Pedidos = new javax.swing.JPanel();
+        box = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Mostrar_Productos = new javax.swing.JTextArea();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        Pedido_input = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        Pedir = new javax.swing.JButton();
         Gestion_Stock = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -135,13 +150,13 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(load_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton2.setText("Pedidos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Boton_pedidos.setText("Pedidos");
+        Boton_pedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Boton_pedidosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanel1.add(Boton_pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jButton3.setText("Gestion Stock");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -196,18 +211,72 @@ public class Interfaz extends javax.swing.JFrame {
         Parent.setBackground(new java.awt.Color(255, 255, 255));
         Parent.setLayout(new java.awt.CardLayout());
 
-        Pedidos.setBackground(new java.awt.Color(255, 255, 255));
+        Inicio.setBackground(new java.awt.Color(255, 255, 255));
+        Inicio.setForeground(new java.awt.Color(255, 255, 255));
+        Inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout PedidosLayout = new javax.swing.GroupLayout(Pedidos);
-        Pedidos.setLayout(PedidosLayout);
-        PedidosLayout.setHorizontalGroup(
-            PedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        PedidosLayout.setVerticalGroup(
-            PedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-        );
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel26.setText("Bienvenido");
+        Inicio.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel27.setText("Presiona el boton de la accion que deseas realizar");
+        Inicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+
+        Parent.add(Inicio, "card8");
+
+        Pedidos.setBackground(new java.awt.Color(255, 255, 255));
+        Pedidos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        box.setEditable(true);
+        box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxActionPerformed(evt);
+            }
+        });
+        Pedidos.add(box, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 90, 30));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel25.setText("Realizar Pedido");
+        Pedidos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+
+        Mostrar_Productos.setEditable(false);
+        Mostrar_Productos.setColumns(20);
+        Mostrar_Productos.setRows(5);
+        jScrollPane3.setViewportView(Mostrar_Productos);
+
+        Pedidos.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 480, 210));
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel28.setText("Productos disponibles");
+        Pedidos.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel29.setText("Seleccione el almacen desde el cual desea solicitar el pedido");
+        Pedidos.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        Pedido_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Pedido_inputActionPerformed(evt);
+            }
+        });
+        Pedidos.add(Pedido_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 490, 30));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel31.setText("Escriba su pedido de la siguiente manera:  producto,cantidad/producto,cantidad......");
+        Pedidos.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel33.setText("Ejemplo: Pantalla,3/Microfono,5");
+        Pedidos.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        Pedir.setText("Realizar Pedido");
+        Pedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PedirActionPerformed(evt);
+            }
+        });
+        Pedidos.add(Pedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 170, 30));
 
         Parent.add(Pedidos, "card2");
 
@@ -411,12 +480,41 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Boton_pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_pedidosActionPerformed
+        Grafo grafo=Global.getGrafo();
+        
+        if (grafo.getFirst()==null) {
+            JOptionPane.showMessageDialog(null, "Erroe!!! Primero debe cargar el txt");
+        
+        } else {
+            box.removeAllItems();
+            
+            Funciones funciones=new Funciones();
+            
+                String nombres=funciones.nombres_almacenes(grafo);
+
+                String[] almacenes=nombres.split(",");
+
+                for (int i = 0; i < almacenes.length; i++) {
+                    box.addItem(almacenes[i]);
+            
+        }
+    
+
+        Mostrar_Productos.setText(funciones.mostrar_disponible(grafo));
+        
         Parent.removeAll();
         Parent.add(Pedidos);
         Parent.repaint();
         Parent.revalidate();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_Boton_pedidosActionPerformed
 
 
     private void load_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_txt_buttonActionPerformed
@@ -740,6 +838,70 @@ public class Interfaz extends javax.swing.JFrame {
         }else{
         JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes realizar el reporte");}    }//GEN-LAST:event_DFSActionPerformed
 
+    private void boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxActionPerformed
+
+    }//GEN-LAST:event_boxActionPerformed
+
+    private void Pedido_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pedido_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Pedido_inputActionPerformed
+
+    private void PedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedirActionPerformed
+       if (Pedido_input.getText().isBlank()) {
+           
+           JOptionPane.showMessageDialog(null, "Error!! Ingrese un pedido");
+    
+       } else if (!Pedido_input.getText().contains(",")) {
+            JOptionPane.showMessageDialog(null, "Error!! Ingrese el pedido correctamente");
+            }
+
+       else {
+           try{
+                 Grafo grafo = Global.getGrafo();
+                 Funciones funciones=new Funciones();
+                String pedido=Pedido_input.getText();
+                String almacen=box.getSelectedItem().toString();
+
+                String[] productos=pedido.split("/");
+                String[] nombre_produ;
+                Almacen storage=grafo.getVertice(almacen);
+                
+                for (int i = 0; i <productos.length; i++) {
+                   nombre_produ=productos[i].split(",");
+                   Product producto=storage.getListaProductos().searchproduct(nombre_produ[0]) ;
+                    
+                   if(producto!=null && producto.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto.getQuantity()) {
+                       producto.setQuantity(producto.getQuantity()-Integer.parseInt(nombre_produ[1]));
+                   
+                   }  
+                   else if (Integer.parseInt(nombre_produ[1])>producto.getQuantity()){
+                       int suma_pedido=producto.getQuantity();
+                       producto.setQuantity(0);
+                       //System.out.println("no hay suficiente");
+                      
+                       //procede a buscar en otros almacenes 
+                   }
+                   
+                   else if (producto==null){
+                       //solicitar pedido tu momento kevin
+                       //System.out.println("no hay en el almacen");
+                   }  
+               }
+                
+               JOptionPane.showMessageDialog(null, "Pedido realizado con exito");
+               Pedido_input.setText("");
+               Mostrar_Productos.setText(funciones.mostrar_disponible(grafo));
+           } 
+
+        catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!! Ingrese el pedido correctamente");}
+        
+       
+       }
+
+
+       
+    }//GEN-LAST:event_PedirActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -783,22 +945,27 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel Almacen;
     private javax.swing.JButton BFS;
     private javax.swing.JPanel BFS_DFS;
+    private javax.swing.JButton Boton_pedidos;
     private javax.swing.JButton DFS;
     private javax.swing.JPanel Gestion_Stock;
+    private javax.swing.JPanel Inicio;
+    private javax.swing.JTextArea Mostrar_Productos;
     private javax.swing.JPanel Parent;
+    private javax.swing.JTextField Pedido_input;
     private javax.swing.JPanel Pedidos;
+    private javax.swing.JButton Pedir;
     private javax.swing.JPanel Route;
     private javax.swing.JTextArea Salida;
     private javax.swing.JPanel ShowGrafo;
     private javax.swing.JButton almacen;
     private javax.swing.JTextField almacen_input;
     private javax.swing.JTextField almacen_input2;
+    private javax.swing.JComboBox<String> box;
     private javax.swing.JTextField destiny_input3;
     private javax.swing.JTextField entrada_input;
     private javax.swing.JButton insertAlmacen_button;
     private javax.swing.JButton insertarRuta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -818,7 +985,14 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -828,6 +1002,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton load_txt_button;
     private javax.swing.JTextField object_input;
     private javax.swing.JTextField origin_input3;

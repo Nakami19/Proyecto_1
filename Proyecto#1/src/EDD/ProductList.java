@@ -17,6 +17,12 @@ public class ProductList {
         this.size = 0;
     }
     
+    public boolean empty() {
+        return getHead()==null;
+    
+    }
+    
+    
     public Nodo insertEnd(Product producto){
         Nodo<Product> node = new Nodo<Product>(producto);
         if (isEmpty()) {
@@ -52,7 +58,25 @@ public class ProductList {
         
         return cadena;
     }
+     
+       public Product searchproduct(String name) {
 
+        if (!empty()) {
+
+         for (Nodo<Product> aux=getHead();aux!=null; aux=aux.getNext()) {
+             
+             if (aux.getData().getName().equalsIgnoreCase(name)) {
+                 
+                 return aux.getData();
+             }
+            }
+           }
+            
+         return null;
+           
+     }
+     
+     
     
     /**
      * @return the head
