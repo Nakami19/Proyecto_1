@@ -30,7 +30,7 @@ public class Funciones {
      return nombres;
   }
   
-  public String mostrar_disponible(Grafo grafo) {
+  public ProductList mostrar_disponible(Grafo grafo) {
               
         ProductList agregados=new ProductList();
          
@@ -50,9 +50,8 @@ public class Funciones {
             }   
         }
            
-        String productos=agregados.mostrar();
         
-        return productos;
+        return agregados;
   
   
   }
