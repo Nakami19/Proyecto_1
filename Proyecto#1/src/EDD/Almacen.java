@@ -14,6 +14,7 @@ public class Almacen {
     private AdjacentList listaAdyacencia;
     private String dPrevious; 
     private int dPeso;
+    private int dPesofijo;
     
     private Almacen siguiente;//nodo
 
@@ -24,6 +25,16 @@ public class Almacen {
         this.siguiente = null;
         this.dPrevious= "";
         this.dPeso=0;
+        this.dPesofijo=0;
+
+    }
+
+    public int getdPesofijo() {
+        return dPesofijo;
+    }
+
+    public void setdPesofijo(int dPesofijo) {
+        this.dPesofijo = dPesofijo;
     }
 
     public String getdPrevious() {

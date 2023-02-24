@@ -481,7 +481,7 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error!!! Primero debe cargar el txt");
         
         } else {
-            box.removeAllItems();
+            box.removeAllItems();   
             
             Funciones funciones=new Funciones();
             
@@ -665,6 +665,7 @@ public class Interfaz extends javax.swing.JFrame {
         Parent.add(Almacen);
         Parent.repaint();
         Parent.revalidate();
+
     }//GEN-LAST:event_almacenActionPerformed
 
     private void rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaActionPerformed
@@ -673,8 +674,7 @@ public class Interfaz extends javax.swing.JFrame {
         Parent.add(Route);
         Parent.repaint();
         Parent.revalidate();
-        grafo.grafoDijsktra("A");
-        System.out.println(grafo.getVertice("E").getdPrevious());
+        System.out.println(grafo.grafoDijsktra("A","D").printGrafo());
     }//GEN-LAST:event_rutaActionPerformed
 
     private void almacen_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacen_inputActionPerformed

@@ -116,7 +116,7 @@ public class Grafo {
           } 
         return almacenes;
     }
-        public Grafo BFS(String entrada){
+    public Grafo BFS(String entrada){
         Grafo grafo = Global.getGrafo();
         Grafo cola = new Grafo();
         Grafo bfs = new Grafo();
@@ -145,7 +145,7 @@ public class Grafo {
         return bfs;  
     }
     
-        public Grafo DFS(String entrada){
+    public Grafo DFS(String entrada){
         Grafo grafo = Global.getGrafo();
         Grafo pila = new Grafo();
         Grafo dfs = new Grafo();
@@ -170,8 +170,8 @@ public class Grafo {
             }
         return dfs;  
     }
-        
-    public void grafoDijsktra(String entrada){
+    
+    public void datosSalidaDijsktra(String entrada, String llegada){
         Grafo grafo = Global.getGrafo();
         grafo.pesoDijsktrra();
         Grafo orden = grafo.BFS(entrada);
@@ -188,6 +188,9 @@ public class Grafo {
                 orden.getVertice(destino.getDestiny().getName()).setdPeso(grafo.getVertice(destino.getDestiny().getName()).getdPeso());
                 grafo.getVertice(destino.getDestiny().getName()).setdPrevious(entrada);
                 orden.getVertice(destino.getDestiny().getName()).setdPrevious(grafo.getVertice(entrada).getName());
+                if (destino.getDestiny().getName().equals(llegada)){
+                    grafo.getVertice(entrada).setdPesofijo(destino.getWeight());
+                } 
                 
             }
             if (origen.getdPeso() + destino.getWeight() < grafo.getVertice(destino.getDestiny().getName()).getdPeso() && origen.getdPeso()!=0){
@@ -195,6 +198,9 @@ public class Grafo {
                 orden.getVertice(destino.getDestiny().getName()).setdPeso(grafo.getVertice(destino.getDestiny().getName()).getdPeso());
                 grafo.getVertice(destino.getDestiny().getName()).setdPrevious(origen.getName());
                 orden.getVertice(destino.getDestiny().getName()).setdPrevious(grafo.getVertice(origen.getName()).getName());
+                if (destino.getDestiny().getName().equals(llegada)){
+                grafo.getVertice(entrada).setdPesofijo(origen.getdPeso()+ destino.getWeight());
+                } 
                 
             }
             
@@ -205,7 +211,99 @@ public class Grafo {
                 destino = grafo.getVertice(origen.getName()).getListaAdyacencia().getFirst();}
 }
         } 
-    }        
+    }
+    
+    public void datosLlegadaDijsktra(String llegada){
+        Grafo grafo = Global.getGrafo();
+        Almacen entrada = grafo.getFirst();
+        while(entrada !=null){
+        datosSalidaDijsktra( entrada.getName(),  llegada);
+        entrada = entrada.getSiguiente();
+        }
+    }
+    
+    public Grafo ordenDijsktra(String llegada){
+        Grafo grafo = Global.getGrafo();
+        grafo.datosLlegadaDijsktra(llegada);
+        Grafo grafod = new Grafo();
+        Almacen nodito = grafo.getFirst();
+        while (nodito != null){
+            
+            grafod.insertFinal(nodito);
+            grafod.getVertice(nodito.getName()).setListaProductos(nodito.getListaProductos());
+            grafod.getVertice(nodito.getName()).setdPeso(nodito.getdPeso());
+            grafod.getVertice(nodito.getName()).setdPesofijo(nodito.getdPesofijo());
+            grafod.getVertice(nodito.getName()).setdPrevious(nodito.getdPrevious());
+            grafod.getVertice(nodito.getName()).setListaAdyacencia(nodito.getListaAdyacencia());
+            grafod.getVertice(nodito.getName()).setSiguiente(nodito.getSiguiente());
+            grafod.getVertice(nodito.getName()).setName(nodito.getName());
+
+
+            nodito= nodito.getSiguiente();
+        }
+        grafod = grafod.nodeByWeight(grafod);
+        
+        System.out.println(grafod.printGrafo());
+        return grafod;
+
+        }
+    
+    public String printRoute(){
+        String cadena = "";
+        for(Almacen pointer = getFirst(); pointer != null; pointer = pointer.getSiguiente()){
+            if(cadena.isBlank()){
+                cadena += pointer.getName() + " -> ";
+            }else if(pointer.getSiguiente() == null){
+                cadena += Integer.toString(pointer.getdPesofijo()) + " " + pointer.getName();
+            }else{
+                cadena += Integer.toString(pointer.getdPesofijo()) + " " + pointer.getName() + " -> ";
+            }
+            
+        }
+        return cadena;
+    }
+    
+    public Grafo grafoDijsktra(String entrada, String llegada){
+        Grafo grafo = Global.getGrafo();
+        datosSalidaDijsktra( entrada,  llegada);
+        Grafo grafod = new Grafo();
+        Almacen lastone = grafo.getVertice(llegada);
+        Almacen firstone = grafo.getVertice(entrada);
+        while (lastone!= firstone){
+            
+            grafod.InsertBegin(lastone);
+            grafod.getVertice(lastone.getName()).setListaProductos(lastone.getListaProductos());
+            grafod.getVertice(lastone.getName()).setdPrevious(lastone.getdPrevious());
+            grafod.getVertice(lastone.getName()).setName(lastone.getName());
+            
+            if (grafo.getVertice(lastone.getdPrevious()) == firstone){
+                grafod.InsertBegin(firstone);    
+                grafod.getVertice(firstone.getName()).setListaProductos(firstone.getListaProductos());
+                grafod.getVertice(firstone.getName()).setdPrevious(firstone.getdPrevious());
+                grafod.getVertice(firstone.getName()).setName(firstone.getName());
+            }
+            
+            lastone=grafo.getVertice(lastone.getdPrevious());
+        }
+        Almacen inicio = grafod.getFirst();
+        Route destino = grafo.getVertice(inicio.getName()).getListaAdyacencia().getFirst();
+        while (inicio.getSiguiente() != null && destino != null){
+            
+            if (destino.getDestiny().getName() == inicio.getSiguiente().getName()){ 
+            grafod.newArista(inicio, inicio.getSiguiente(),destino.getWeight() );
+            }
+            destino = destino.getSiguiente();
+            
+            if (destino == null){
+                inicio = inicio.getSiguiente();
+                destino= grafo.getVertice(inicio.getName()).getListaAdyacencia().getFirst();
+                
+            }
+
+            }
+        
+        return grafod;
+    }
         
     public void pesoDijsktrra(){
         Grafo grafo = Global.getGrafo();
@@ -233,8 +331,55 @@ public class Grafo {
     
     public String printDijkstra(){
         return "en espera aun";
+    }   
+    
+    
+    public Grafo nodeByWeight(Grafo grafod){
+        Almacen temp = null;
+        AlmacenList lista = new AlmacenList();
+        for(Almacen node = grafod.getFirst(); node != null; node = node.getSiguiente()){
+            lista.insertEnd(node);
+        }
+        
+        Grafo grafo2 = new Grafo();
+        
+        for(Nodo<Almacen> pointer = lista.getHead(); pointer != null; pointer = pointer.getNext()){
+            for(Nodo<Almacen> index = pointer.getNext(); index != null; index = index.getNext()){
+                if(pointer.getData().getdPesofijo() > index.getData().getdPesofijo()){
+                    temp = pointer.getData();
+                    pointer.setData(index.getData());
+                    index.setData(temp);
+                }
+            }
+        }
+        
+        for(Nodo<Almacen> pointer = lista.getHead(); pointer != null; pointer = pointer.getNext()){
+            grafo2.insertFinal(pointer.getData());
+            
+        }
+        
+        for (Almacen pointer = grafo2.getFirst(); pointer != null; pointer = pointer.getSiguiente()){
+            for(Nodo<Almacen> index = lista.getHead(); index != null; index = index.getNext()){
+                if(pointer.getName().equalsIgnoreCase(index.getData().getName())){
+                    pointer.setdPesofijo(index.getData().getdPesofijo());
+                    pointer.setListaAdyacencia(index.getData().getListaAdyacencia());
+                }
+            }
+        }
+        return grafo2;
     }
         
+    public void InsertBegin(Almacen dato){
+        Almacen nodo = new Almacen(dato.getName());
+        if (grafoEmpty()) {
+            setFirst(nodo);
+            setLast(nodo);
+        } else {
+            Almacen aux=getFirst();
+            nodo.setSiguiente(aux);
+            setFirst(nodo);
+        }}
+    
     public void insertFinal(Almacen dato) {
         Almacen node = new Almacen(dato.getName());
         
