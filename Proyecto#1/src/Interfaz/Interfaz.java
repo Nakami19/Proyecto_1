@@ -938,8 +938,20 @@ public class Interfaz extends javax.swing.JFrame {
 
                    else if (Integer.parseInt(nombre_produ[1])>producto.getQuantity()){
                        int suma_pedido=producto.getQuantity();
+                       int restante = Integer.parseInt(nombre_produ[1]) - suma_pedido;
                        producto.setQuantity(0);
-                      
+                       Almacen primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
+                       Product pProducto = primero.getListaProductos().searchproduct(nombre_produ[0]);
+                       while (primero!= null){
+                        if (pProducto != null && pProducto.getQuantity()>= restante){
+                            System.out.println("La ruta mas cercana es "+grafo.grafoDijsktra(primero.getName(),storage.getName()).printGrafo());
+                            pProducto.setQuantity(pProducto.getQuantity() - restante);
+                            System.out.println("Producto total en almacen "+primero.getName()+pProducto.getQuantity());
+                            break;}
+                        primero = primero.getSiguiente();    
+                        
+                        
+                       }
                       
                        //procede a buscar en otros almacenes 
                    } 
