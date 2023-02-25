@@ -946,10 +946,12 @@ public class Interfaz extends javax.swing.JFrame {
 
                }
                 if(exito==true) {
-               JOptionPane.showMessageDialog(null, "Pedido realizado con exito");}
+               JOptionPane.showMessageDialog(null, "Pedido realizado con exito");
+                
+                }
                 else {JOptionPane.showMessageDialog(null, "No fue posible procesar su pedido");}
                Pedido_input.setText("");
-               Mostrar_Productos.setText(mostrar);
+                Mostrar_Productos.setText(funciones.mostrar_disponible(grafo).mostrar());
            } 
 
         catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!! Ingrese el pedido correctamente");}
