@@ -919,30 +919,38 @@ public class Interfaz extends javax.swing.JFrame {
                 boolean exito=true;
                 
                 for (int i = 0; i <productos.length; i++) {
+                    System.out.println("entra 1");
                    nombre_produ=productos[i].split(",");
                    Product producto=storage.getListaProductos().searchproduct(nombre_produ[0]) ;
-
-                   if(producto!=null && producto.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto.getQuantity()) {
+                    System.out.println("pasa 2");
+                    System.out.println(producto);
+                    
+                    if (producto==null){
+                       //solicitar pedido tu momento kevin
+                       System.out.println("no hay en el almacen");
+                   }  
+                    else if(producto!=null && producto.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto.getQuantity()) {
                        producto.setQuantity(producto.getQuantity()-Integer.parseInt(nombre_produ[1]));
                        exito=true;
-
-                   }  
-                   else if (producto==null){
-                       //solicitar pedido tu momento kevin
-                       //System.out.println("no hay en el almacen");
-                   }  
+                        System.out.println("pasa 3");
+                   }
                    else if(todosproductos.searchproduct(nombre_produ[0]).getQuantity()<Integer.parseInt(nombre_produ[1])) {
                        JOptionPane.showMessageDialog(null, "No hay stock suficiente para satisfacer el pedido de "+nombre_produ[0]+" "+"De ser posible se procesara el resto de su pedido");
                        exito=false;
+                       System.out.println("pasa 4");
                    }
-
                    else if (Integer.parseInt(nombre_produ[1])>producto.getQuantity()){
                        int suma_pedido=producto.getQuantity();
                        producto.setQuantity(0);
-                      
+                       System.out.println("pasa 5");
                       
                        //procede a buscar en otros almacenes 
                    } 
+                   
+                  
+                   
+
+                   
 
                }
                 if(exito==true) {
