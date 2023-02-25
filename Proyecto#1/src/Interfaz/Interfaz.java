@@ -921,40 +921,68 @@ public class Interfaz extends javax.swing.JFrame {
                 for (int i = 0; i <productos.length; i++) {
                    nombre_produ=productos[i].split(",");
                    Product producto=storage.getListaProductos().searchproduct(nombre_produ[0]) ;
+                   if (todosproductos.searchproduct(nombre_produ[0])== null){
+                       exito = false;
+                   }
+                   
+                   else if (producto==null){
+                        
+                        
+                      Almacen primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
+                      Product pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                      
+                       while (primero!= null){
+                           if (pProducto != null){
+                                if ( pProducto.getQuantity()>= Integer.parseInt(nombre_produ[1])){
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printGrafo());
+                            pProducto.setQuantity(pProducto.getQuantity() - Integer.parseInt(nombre_produ[1]) );
+                            break;}}
+                        primero = primero.getSiguiente();
+                        if (primero != null){
+                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
 
-                   if(producto!=null && producto.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto.getQuantity()) {
+                        }
+                       
+                   }}  
+                    else if(producto!=null && producto.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto.getQuantity()) {
                        producto.setQuantity(producto.getQuantity()-Integer.parseInt(nombre_produ[1]));
                        exito=true;
-
-                   }  
-                   else if (producto==null){
-                       //solicitar pedido tu momento kevin
-                       //System.out.println("no hay en el almacen");
-                   }  
+                   }
                    else if(todosproductos.searchproduct(nombre_produ[0]).getQuantity()<Integer.parseInt(nombre_produ[1])) {
                        JOptionPane.showMessageDialog(null, "No hay stock suficiente para satisfacer el pedido de "+nombre_produ[0]+" "+"De ser posible se procesara el resto de su pedido");
                        exito=false;
                    }
-
+                   
                    else if (Integer.parseInt(nombre_produ[1])>producto.getQuantity()){
+
                        int suma_pedido=producto.getQuantity();
                        int restante = Integer.parseInt(nombre_produ[1]) - suma_pedido;
                        producto.setQuantity(0);
                        Almacen primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
-                       Product pProducto = primero.getListaProductos().searchproduct(nombre_produ[0]);
+                       Product pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                       
                        while (primero!= null){
+                           if (pProducto!= null){
                         if (pProducto != null && pProducto.getQuantity()>= restante){
-                            System.out.println("La ruta mas cercana es "+grafo.grafoDijsktra(primero.getName(),storage.getName()).printGrafo());
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printGrafo());
                             pProducto.setQuantity(pProducto.getQuantity() - restante);
-                            System.out.println("Producto total en almacen "+primero.getName()+pProducto.getQuantity());
-                            break;}
+                            break;}}
                         primero = primero.getSiguiente();    
-                        
-                        
+                        if (primero != null){
+                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                        }
                        }
+
                       
                        //procede a buscar en otros almacenes 
                    } 
+                   
+                  
+                   
+
+                   
 
                }
                 if(exito==true) {

@@ -243,7 +243,6 @@ public class Grafo {
         }
         grafod = grafod.nodeByWeight(grafod);
         
-        System.out.println(grafod.printGrafo());
         return grafod;
 
         }
@@ -254,9 +253,9 @@ public class Grafo {
             if(cadena.isBlank()){
                 cadena += pointer.getName() + " -> ";
             }else if(pointer.getSiguiente() == null){
-                cadena += Integer.toString(pointer.getdPeso()) + " " + pointer.getName();
+                cadena += Integer.toString(pointer.getListaAdyacencia().getFirst().getWeight()) + " " + pointer.getName();
             }else{
-                cadena += Integer.toString(pointer.getdPeso()) + " " + pointer.getName() + " -> ";
+                cadena += Integer.toString(pointer.getListaAdyacencia().getFirst().getWeight()) + " " + pointer.getName() + " -> ";
             }
             
         }
