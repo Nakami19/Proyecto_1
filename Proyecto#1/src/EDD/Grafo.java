@@ -253,9 +253,9 @@ public class Grafo {
             if(cadena.isBlank()){
                 cadena += pointer.getName() + " -> ";
             }else if(pointer.getSiguiente() == null){
-                cadena += Integer.toString(pointer.getListaAdyacencia().getFirst().getWeight()) + " " + pointer.getName();
+                cadena +=  " " + pointer.getName();
             }else{
-                cadena += Integer.toString(pointer.getListaAdyacencia().getFirst().getWeight()) + " " + pointer.getName() + " -> ";
+                cadena += " " + pointer.getName() + " -> ";
             }
             
         }
@@ -328,9 +328,6 @@ public class Grafo {
     }
     }
     
-    public String printDijkstra(){
-        return "en espera aun";
-    }   
     
     
     public Grafo nodeByWeight(Grafo grafod){

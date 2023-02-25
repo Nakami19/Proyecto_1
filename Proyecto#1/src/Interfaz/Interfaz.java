@@ -935,7 +935,7 @@ public class Interfaz extends javax.swing.JFrame {
                            if (pProducto != null){
                                 if ( pProducto.getQuantity()>= Integer.parseInt(nombre_produ[1])){
                             // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printGrafo());
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
                             pProducto.setQuantity(pProducto.getQuantity() - Integer.parseInt(nombre_produ[1]) );
                             break;}}
                         primero = primero.getSiguiente();
@@ -966,7 +966,7 @@ public class Interfaz extends javax.swing.JFrame {
                            if (pProducto!= null){
                         if (pProducto != null && pProducto.getQuantity()>= restante){
                             // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printGrafo());
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
                             pProducto.setQuantity(pProducto.getQuantity() - restante);
                             break;}}
                         primero = primero.getSiguiente();    
