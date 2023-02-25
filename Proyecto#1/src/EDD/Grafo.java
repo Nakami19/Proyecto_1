@@ -254,9 +254,9 @@ public class Grafo {
             if(cadena.isBlank()){
                 cadena += pointer.getName() + " -> ";
             }else if(pointer.getSiguiente() == null){
-                cadena += Integer.toString(pointer.getdPesofijo()) + " " + pointer.getName();
+                cadena += Integer.toString(pointer.getdPeso()) + " " + pointer.getName();
             }else{
-                cadena += Integer.toString(pointer.getdPesofijo()) + " " + pointer.getName() + " -> ";
+                cadena += Integer.toString(pointer.getdPeso()) + " " + pointer.getName() + " -> ";
             }
             
         }

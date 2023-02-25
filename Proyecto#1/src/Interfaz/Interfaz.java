@@ -674,7 +674,7 @@ public class Interfaz extends javax.swing.JFrame {
         Parent.add(Route);
         Parent.repaint();
         Parent.revalidate();
-        System.out.println(grafo.grafoDijsktra("A","D").printGrafo());
+        System.out.println(grafo.grafoDijsktra("A","D").printRoute());
     }//GEN-LAST:event_rutaActionPerformed
 
     private void almacen_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacen_inputActionPerformed
