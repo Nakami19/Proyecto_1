@@ -104,6 +104,12 @@ public class AdjacentList {
         return cadena;
     }
     
+    
+    /**
+     * Metodo que guarda en un String todos los destinos que contiene el almacen de origen
+     * @param name el parametro name define el nombre del almacen de origen 
+     * @return String que contiene todas las rutas que posee el almacen de origen
+     */
     public String saveroute(String name) {
             String cadena ="";
         Route temp = getFirst();

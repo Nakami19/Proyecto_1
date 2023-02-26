@@ -18,6 +18,10 @@ public class Product {
     }
 
     
+    /**
+     * Metodo para mostrar los atributos del producto
+     * @return String que contiene todos los atributos de la clase
+     */
     public String show() {
         return this.name+","+Integer.toString(this.quantity);
     
