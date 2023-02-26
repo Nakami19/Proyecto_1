@@ -144,33 +144,49 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setEnabled(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        load_txt_button.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         load_txt_button.setText("Cargar Txt");
+        load_txt_button.setBorder(reporte.getBorder());
+        load_txt_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        load_txt_button.setPreferredSize(new java.awt.Dimension(116, 23));
         load_txt_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 load_txt_buttonActionPerformed(evt);
             }
         });
-        jPanel1.add(load_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel1.add(load_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, -1));
 
+        Boton_pedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Boton_pedidos.setText("Pedidos");
+        Boton_pedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Boton_pedidos.setMaximumSize(new java.awt.Dimension(115, 23));
+        Boton_pedidos.setMinimumSize(new java.awt.Dimension(115, 23));
+        Boton_pedidos.setPreferredSize(new java.awt.Dimension(116, 23));
         Boton_pedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton_pedidosActionPerformed(evt);
             }
         });
-        jPanel1.add(Boton_pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanel1.add(Boton_pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 120, -1));
 
+        Gestion_stock.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Gestion_stock.setText("Gestion Stock");
+        Gestion_stock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Gestion_stock.setPreferredSize(new java.awt.Dimension(115, 23));
         Gestion_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gestion_stockActionPerformed(evt);
             }
         });
-        jPanel1.add(Gestion_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        jPanel1.add(Gestion_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 120, -1));
 
+        almacen.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         almacen.setText("Añadir Almacén");
+        almacen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         almacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 almacenActionPerformed(evt);
@@ -178,39 +194,52 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(almacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 120, -1));
 
+        ruta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ruta.setText("Añadir Ruta");
+        ruta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ruta.setMaximumSize(new java.awt.Dimension(115, 23));
+        ruta.setMinimumSize(new java.awt.Dimension(115, 23));
+        ruta.setPreferredSize(new java.awt.Dimension(115, 23));
         ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rutaActionPerformed(evt);
             }
         });
-        jPanel1.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 110, -1));
+        jPanel1.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, -1));
 
+        save_txt_button.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         save_txt_button.setText("Guardar en Txt");
+        save_txt_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        save_txt_button.setPreferredSize(new java.awt.Dimension(116, 23));
         save_txt_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_txt_buttonActionPerformed(evt);
             }
         });
-        jPanel1.add(save_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        jPanel1.add(save_txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 120, -1));
 
+        Mostrar_grafo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Mostrar_grafo.setText("Mostrar grafo");
+        Mostrar_grafo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Mostrar_grafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Mostrar_grafoActionPerformed(evt);
             }
         });
-        jPanel1.add(Mostrar_grafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+        jPanel1.add(Mostrar_grafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 120, -1));
 
+        reporte.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         reporte.setText("Reporte");
+        reporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reporte.setName(""); // NOI18N
         reporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reporteActionPerformed(evt);
             }
         });
-        jPanel1.add(reporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 100, -1));
+        jPanel1.add(reporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 120, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 510));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 510));
 
         Parent.setBackground(new java.awt.Color(255, 255, 255));
         Parent.setLayout(new java.awt.CardLayout());
@@ -219,11 +248,14 @@ public class Interfaz extends javax.swing.JFrame {
         Inicio.setForeground(new java.awt.Color(255, 255, 255));
         Inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel26.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel26.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Bienvenido");
-        Inicio.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
+        Inicio.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(51, 51, 51));
         jLabel27.setText("Presiona el boton de la accion que deseas realizar");
         Inicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
@@ -233,176 +265,261 @@ public class Interfaz extends javax.swing.JFrame {
         Pedidos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         box.setEditable(true);
+        box.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        box.setForeground(new java.awt.Color(51, 51, 51));
         box.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxActionPerformed(evt);
             }
         });
-        Pedidos.add(box, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 90, 30));
+        Pedidos.add(box, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 90, 40));
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Realizar Pedido");
-        Pedidos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+        Pedidos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
 
         Mostrar_Productos.setEditable(false);
+        Mostrar_Productos.setBackground(new java.awt.Color(51, 51, 51));
         Mostrar_Productos.setColumns(20);
+        Mostrar_Productos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Mostrar_Productos.setRows(5);
         jScrollPane3.setViewportView(Mostrar_Productos);
 
-        Pedidos.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 480, 210));
+        Pedidos.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 540, 210));
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(51, 51, 51));
         jLabel28.setText("Productos disponibles");
-        Pedidos.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+        Pedidos.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(51, 51, 51));
         jLabel29.setText("Seleccione el almacen desde el cual desea solicitar el pedido");
-        Pedidos.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        Pedidos.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        Pedido_input.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Pedido_input.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Pedido_input.setDragEnabled(true);
         Pedido_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Pedido_inputActionPerformed(evt);
             }
         });
-        Pedidos.add(Pedido_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 490, 30));
+        Pedidos.add(Pedido_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 550, 30));
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(51, 51, 51));
         jLabel31.setText("Escriba su pedido de la siguiente manera:  producto,cantidad/producto,cantidad......");
-        Pedidos.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        Pedidos.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(51, 51, 51));
         jLabel33.setText("Ejemplo: Pantalla,3/Microfono,5");
-        Pedidos.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        Pedidos.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
+        Pedir.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Pedir.setText("Realizar Pedido");
+        Pedir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Pedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PedirActionPerformed(evt);
             }
         });
-        Pedidos.add(Pedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 170, 30));
+        Pedidos.add(Pedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 160, 30));
 
         Parent.add(Pedidos, "card2");
 
         Gestion_Stock.setBackground(new java.awt.Color(255, 255, 255));
         Gestion_Stock.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Gestión de Stock de los Almacenes");
-        Gestion_Stock.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+        Gestion_Stock.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, -1));
 
-        jLabel9.setText("Aquí puede gestionar el Stock del almacén de su preferencia, introduzca el nombre del almacén al que quiere");
-        Gestion_Stock.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Aquí puede gestionar el Stock del almacén de su preferencia, introduzca el nombre del almacén al ");
+        Gestion_Stock.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        jLabel10.setText("gestionarle el Stock, introduzca el nombre del producto a añadir, su cantidad, y presione el botón para");
-        Gestion_Stock.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("que quiere gestionarle el Stock, introduzca el nombre del producto a añadir, su cantidad, y presione");
+        Gestion_Stock.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        jLabel11.setText("guardar los datos hechos.");
-        Gestion_Stock.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText(" el botón para guardar los datos hechos.");
+        Gestion_Stock.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("Introduzca el nombre del Almacén al que se le va a gestionar el stock:");
-        Gestion_Stock.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        Gestion_Stock.add(almacen_input2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 570, -1));
+        Gestion_Stock.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
+        almacen_input2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Gestion_Stock.add(almacen_input2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 570, -1));
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("Introduzca el nombre del Objeto que se va a introducir en el Stock del almacén:");
-        Gestion_Stock.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-        Gestion_Stock.add(object_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 570, -1));
+        Gestion_Stock.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
+        object_input.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Gestion_Stock.add(object_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 570, -1));
+
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
         jLabel14.setText("Introduzca la cantidad del objeto que se va a introducir en el Stock del almacén:");
-        Gestion_Stock.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
-        Gestion_Stock.add(quantity_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 570, -1));
+        Gestion_Stock.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 366, -1, 20));
 
+        quantity_input.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Gestion_Stock.add(quantity_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 570, -1));
+
+        Añadir_stock.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Añadir_stock.setText("Añadir Objeto al Stock del Almacén");
+        Añadir_stock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Añadir_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Añadir_stockActionPerformed(evt);
             }
         });
-        Gestion_Stock.add(Añadir_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+        Gestion_Stock.add(Añadir_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, -1, -1));
 
         Parent.add(Gestion_Stock, "card4");
 
         Almacen.setBackground(new java.awt.Color(255, 255, 255));
         Almacen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gestión de Almacenes");
-        Almacen.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        Almacen.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("(no puede contener caracteres numéricos y debe ser de una letra):");
-        Almacen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        Almacen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
+        almacen_input.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         almacen_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 almacen_inputActionPerformed(evt);
             }
         });
-        Almacen.add(almacen_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 550, 40));
+        Almacen.add(almacen_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 550, 40));
 
+        insertAlmacen_button.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         insertAlmacen_button.setText("Añadir Almacén");
+        insertAlmacen_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         insertAlmacen_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertAlmacen_buttonActionPerformed(evt);
             }
         });
-        Almacen.add(insertAlmacen_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, -1, -1));
+        Almacen.add(insertAlmacen_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Añadir Almacenes:");
-        Almacen.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        Almacen.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Añadir Rutas de Entrada:");
-        Almacen.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 250, -1));
+        Almacen.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 250, -1));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Introduzca el almacen entrada tomando como destino el nuevo almacen:");
-        Almacen.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
-        Almacen.add(salida_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 550, -1));
-        Almacen.add(entrada_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 550, -1));
+        Almacen.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
+        salida_input.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Almacen.add(salida_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 550, -1));
+
+        entrada_input.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Almacen.add(entrada_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 550, -1));
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Introduzca la distancia entre los dos almacenes");
-        Almacen.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
-        Almacen.add(weight_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 550, -1));
-        Almacen.add(weight_input2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 550, -1));
+        Almacen.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
 
+        weight_input.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Almacen.add(weight_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 550, -1));
+
+        weight_input2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Almacen.add(weight_input2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 550, -1));
+
+        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 51, 51));
         jLabel15.setText("Añadir Rutas de Salida:");
-        Almacen.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 250, -1));
+        Almacen.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 250, -1));
 
+        jLabel16.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(51, 51, 51));
         jLabel16.setText("Introduzca el almacén destino tomando como origen el nuevo almacen:");
-        Almacen.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        Almacen.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
+        jLabel17.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(51, 51, 51));
         jLabel17.setText("Introduzca la distancia entre los dos almacenes");
-        Almacen.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        Almacen.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Introduzca el nombre del almacen que desea añadir :");
-        Almacen.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        Almacen.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         Parent.add(Almacen, "card3");
 
         Route.setBackground(new java.awt.Color(255, 255, 255));
         Route.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel18.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Gestión de Rutas");
-        Route.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        Route.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
+        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
         jLabel19.setText("Añadir Rutas:");
         Route.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
+        jLabel20.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
         jLabel20.setText("Introduzca el nombre del almacen de la origen de la ruta:");
         Route.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        origin_input3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Route.add(origin_input3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 550, -1));
 
+        jLabel21.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
         jLabel21.setText("Introduzca el nombre del almacen que será el destino de la ruta:");
         Route.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        destiny_input3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Route.add(destiny_input3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 550, -1));
 
+        jLabel22.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(51, 51, 51));
         jLabel22.setText("Introduzca la distancia entre los dos almacenes");
         Route.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+
+        weight_input3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         Route.add(weight_input3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 550, -1));
 
+        insertarRuta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         insertarRuta.setText("Añadir Ruta");
+        insertarRuta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         insertarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertarRutaActionPerformed(evt);
             }
         });
-        Route.add(insertarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, -1));
+        Route.add(insertarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, -1, -1));
 
         Parent.add(Route, "card4");
 
@@ -410,66 +527,46 @@ public class Interfaz extends javax.swing.JFrame {
         ShowGrafo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Parent.add(ShowGrafo, "card6");
 
+        BFS_DFS.setBackground(new java.awt.Color(255, 255, 255));
+        BFS_DFS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         pantalla_BFS_DFS.setEditable(false);
         pantalla_BFS_DFS.setColumns(20);
+        pantalla_BFS_DFS.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         pantalla_BFS_DFS.setRows(5);
         pantalla_BFS_DFS.setFocusable(false);
         jScrollPane2.setViewportView(pantalla_BFS_DFS);
 
+        BFS_DFS.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 84, 517, 402));
+
+        BFS.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         BFS.setText("Mostrar por recorrido BFS");
+        BFS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BFSActionPerformed(evt);
             }
         });
+        BFS_DFS.add(BFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 49, 210, -1));
 
+        DFS.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         DFS.setText("Mostrar por recorrido DFS");
+        DFS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DFSActionPerformed(evt);
             }
         });
+        BFS_DFS.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 49, 210, -1));
 
-        jLabel24.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Reportes De Disponibilidad Por Almacenes");
-
-        javax.swing.GroupLayout BFS_DFSLayout = new javax.swing.GroupLayout(BFS_DFS);
-        BFS_DFS.setLayout(BFS_DFSLayout);
-        BFS_DFSLayout.setHorizontalGroup(
-            BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BFS_DFSLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BFS_DFSLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(54, Short.MAX_VALUE))
-                    .addGroup(BFS_DFSLayout.createSequentialGroup()
-                        .addComponent(BFS, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DFS, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BFS_DFSLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
-        );
-        BFS_DFSLayout.setVerticalGroup(
-            BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BFS_DFSLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(BFS_DFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BFS)
-                    .addComponent(DFS))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-        );
+        BFS_DFS.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 420, 25));
 
         Parent.add(BFS_DFS, "card7");
 
-        getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 610, 510));
+        getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 600, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -669,12 +766,10 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_almacenActionPerformed
 
     private void rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaActionPerformed
-        Grafo grafo = Global.getGrafo();
         Parent.removeAll();
         Parent.add(Route);
         Parent.repaint();
         Parent.revalidate();
-        System.out.println(grafo.grafoDijsktra("A","D").printGrafo());
     }//GEN-LAST:event_rutaActionPerformed
 
     private void almacen_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacen_inputActionPerformed
@@ -919,33 +1014,134 @@ public class Interfaz extends javax.swing.JFrame {
                 boolean exito=true;
                 
                 for (int i = 0; i <productos.length; i++) {
-                    System.out.println("entra 1");
                    nombre_produ=productos[i].split(",");
                    Product producto=storage.getListaProductos().searchproduct(nombre_produ[0]) ;
-                    System.out.println("pasa 2");
-                    System.out.println(producto);
-                    
-                    if (producto==null){
-                       //solicitar pedido tu momento kevin
-                       System.out.println("no hay en el almacen");
-                   }  
+                   if (todosproductos.searchproduct(nombre_produ[0])== null){
+                       exito = false;
+                   }
+                   
+                   else if (producto==null){
+                        
+                        
+                      Almacen primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
+                      Product pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                      boolean alcanza1=false;
+                      
+                       while (primero!= null){
+                           if (pProducto != null){
+                                if ( pProducto.getQuantity()>= Integer.parseInt(nombre_produ[1])){
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
+                            pProducto.setQuantity(pProducto.getQuantity() - Integer.parseInt(nombre_produ[1]) );
+                            alcanza1=true;
+                            break;}}
+                        primero = primero.getSiguiente();
+                        if (primero != null){
+                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+
+                        }}
+                        
+                       if (alcanza1 == false){
+                            primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
+                            pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                            int restante1 = Integer.parseInt(nombre_produ[1]); 
+                            JOptionPane.showMessageDialog(null,"Como no se puede reestablecer el stock con solo 1 almacen, se procedira a sumar los stocks para los almacenes mas cercanos de "+storage.getName());
+                           while (primero!= null && restante1!=0){
+                           if (pProducto!= null){
+                               if (restante1>= pProducto.getQuantity()){
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante1 +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
+                            restante1-=pProducto.getQuantity();
+                            pProducto.setQuantity(0);
+                               }
+                               else if (restante1 < pProducto.getQuantity()){
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+                            
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante1 +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
+                            pProducto.setQuantity(pProducto.getQuantity() - restante1);
+                            restante1 = 0;}
+                               }
+
+                           if (restante1 == 0){ 
+                           break;}
+                        primero = primero.getSiguiente();    
+                        if (primero != null){
+                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                        }
+                       }
+
+                      
+                       //procede a buscar en otros almacenes 
+                   
+                       
+                   }}  
                     else if(producto!=null && producto.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto.getQuantity()) {
                        producto.setQuantity(producto.getQuantity()-Integer.parseInt(nombre_produ[1]));
                        exito=true;
-                        System.out.println("pasa 3");
                    }
                    else if(todosproductos.searchproduct(nombre_produ[0]).getQuantity()<Integer.parseInt(nombre_produ[1])) {
                        JOptionPane.showMessageDialog(null, "No hay stock suficiente para satisfacer el pedido de "+nombre_produ[0]+" "+"De ser posible se procesara el resto de su pedido");
                        exito=false;
-                       System.out.println("pasa 4");
                    }
+                   
                    else if (Integer.parseInt(nombre_produ[1])>producto.getQuantity()){
+                       boolean alcanza2= false;
                        int suma_pedido=producto.getQuantity();
+                       int restante = Integer.parseInt(nombre_produ[1]) - suma_pedido;
                        producto.setQuantity(0);
-                       System.out.println("pasa 5");
+                       Almacen primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
+                       Product pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                       
+                       while (primero!= null){
+                           if (pProducto!= null){
+                        if ( pProducto.getQuantity()>= restante){
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
+                            pProducto.setQuantity(pProducto.getQuantity() - restante);
+                            alcanza2=true;
+                            break;}}
+                        primero = primero.getSiguiente();    
+                        if (primero != null){
+                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                        }
+                       }
+                       
+                       if (alcanza2 == false){
+                            primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
+                            pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                            JOptionPane.showMessageDialog(null,"Como no se puede reestablecer el stock con solo 1 almacen, se procedira a sumar los stocks para los almacenes mas cercanos de "+storage.getName());
+                           while (primero!= null){
+                           if (pProducto!= null){
+                               if (restante>= pProducto.getQuantity()){
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
+                            restante-=pProducto.getQuantity();
+                            pProducto.setQuantity(0);
+
+
+                               }
+                               else if (restante < pProducto.getQuantity()){
+                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+                            
+                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
+                            pProducto.setQuantity(pProducto.getQuantity() - restante);
+                            restante = 0;}
+                               }
+
+                           if (restante == 0){ 
+                           break;}
+                        primero = primero.getSiguiente();    
+                        if (primero != null){
+                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                        }
+                       }
+
                       
                        //procede a buscar en otros almacenes 
-                   } 
+                   }
+                   }
                    
                   if (producto==null){
                        //solicitar pedido tu momento kevin
