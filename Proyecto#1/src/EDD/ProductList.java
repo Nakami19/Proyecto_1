@@ -5,9 +5,14 @@
 package EDD;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase es el nodo de la lista de adyacencia
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 19/02/2023
+
+ */  
 public class ProductList {
     private Nodo<Product> head;
     private int size;

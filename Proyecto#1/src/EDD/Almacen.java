@@ -5,10 +5,16 @@
 package EDD;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase son el objeto y nodo Almacen
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 19/02/2023
+
+ */  
 public class Almacen {
+    //Campos de la clase 
     private String name;    
     private ProductList listaProductos;
     private AdjacentList listaAdyacencia;
@@ -17,6 +23,7 @@ public class Almacen {
     private int dPesofijo;
     
     private Almacen siguiente;//nodo
+    // Constructor para la creacion de grafos
 
     public Almacen(String name) {
         this.name = name;
@@ -26,7 +33,7 @@ public class Almacen {
         this.dPrevious= "";
         this.dPeso=0;
         this.dPesofijo=0;
-
+    //Cierre del constructor
     }
 
     public int getdPesofijo() {

@@ -5,9 +5,14 @@
 package EDD;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase son las listas de adyacencias de los almacenes
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 19/02/2023
+
+ */  
 public class AdjacentList {
     private Route first;
     private Route last;

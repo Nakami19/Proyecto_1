@@ -5,35 +5,31 @@
 package EDD;
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase es el nodo de la lista de adyacencia
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 19/02/2023
+
+ */  
 public class Route {
-    //private Almacen source;
+    //Campos de la clase 
     private Almacen destiny;
     private int weight;
     private Route siguiente;
+    
+    
+    // Constructor para la creacion de grafos
 
-    public Route(/*Almacen source,*/ Almacen destiny, int weight) {
-        //this.source = source;
+    public Route( Almacen destiny, int weight) {
         this.destiny = destiny;
         this.weight = weight;
         this.siguiente = null;
-    }
+    }    //Cierre del constructor
 
-    /**
-     * @return the source
-     */
-    /*public Almacen getSource() {
-        return source;
-    }*/
 
-    /**
-     * @param source the source to set
-     */
-    /*public void setSource(Almacen source) {
-        this.source = source;
-    }*/
+
 
     /**
      * @return the destiny

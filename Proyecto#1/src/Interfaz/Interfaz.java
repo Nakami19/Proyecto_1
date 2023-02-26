@@ -29,9 +29,14 @@ import org.graphstream.ui.view.Viewer;
 
 
 /**
- *
- * @author Tomas
- */
+
+ * Esta clase es el nodo de la lista de adyacencia
+
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
+
+ * @version: 26/02/2023
+
+ */  
 public class Interfaz extends javax.swing.JFrame {
     private String path;
     /**
@@ -706,15 +711,22 @@ public class Interfaz extends javax.swing.JFrame {
 
       }
     }//GEN-LAST:event_load_txt_buttonActionPerformed
-
+    /**
+     * Metodo desde el cual se accede a la pantalla de gestion de stock
+     * @param evt 
+     */
     private void Gestion_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Gestion_stockActionPerformed
         Parent.removeAll();
         Parent.add(Gestion_Stock);
         Parent.repaint();
         Parent.revalidate();
     }//GEN-LAST:event_Gestion_stockActionPerformed
-
+    /**
+     * Metodo donde se insertan almacenes nuevos al grafo, donde se le solicita al usuario colacar una entrada y una salida del almacen para evitar almacenes aisalados
+     * @param evt 
+     */
     private void Añadir_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Añadir_stockActionPerformed
+        
         Funciones funciones=new Funciones();
         Grafo grafo = Global.getGrafo();
         
@@ -757,7 +769,10 @@ public class Interfaz extends javax.swing.JFrame {
         }
         else { JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT"); }
     }//GEN-LAST:event_Añadir_stockActionPerformed
-
+    /**
+     * Metodo desde el cual se accede a la pantalla de añadir almacen
+     * @param evt 
+     */
     private void almacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacenActionPerformed
         Parent.removeAll();
         Parent.add(Almacen);
@@ -765,7 +780,10 @@ public class Interfaz extends javax.swing.JFrame {
         Parent.revalidate();
 
     }//GEN-LAST:event_almacenActionPerformed
-
+    /**
+     * Metodo desde el cual se accede a la pantalla de añadir ruta
+     * @param evt 
+     */
     private void rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaActionPerformed
         Parent.removeAll();
         Parent.add(Route);
@@ -776,7 +794,10 @@ public class Interfaz extends javax.swing.JFrame {
     private void almacen_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacen_inputActionPerformed
 
     }//GEN-LAST:event_almacen_inputActionPerformed
-
+    /**
+     * Metodo donde se insertan almacenes nuevos al grafo, donde se le solicita al usuario colacar una entrada y una salida del almacen para evitar almacenes aisalados
+     * @param evt 
+     */
     private void insertAlmacen_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertAlmacen_buttonActionPerformed
         String data ="";
         if (Global.getGrafo().getFirst()!=null){
@@ -840,7 +861,10 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes de registrar un almacen");
         }
     }//GEN-LAST:event_insertAlmacen_buttonActionPerformed
-
+    /**
+     * Metodo donde se insertan las rutas de almacenes ya creados 
+     * @param evt 
+     */
     private void insertarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarRutaActionPerformed
         if (Global.getGrafo().getFirst()!=null){
 
@@ -971,7 +995,10 @@ public class Interfaz extends javax.swing.JFrame {
         Parent.add(BFS_DFS);
         Parent.repaint();
         Parent.revalidate();    }//GEN-LAST:event_reporteActionPerformed
-
+    /**
+     * Metodo desde el cual realiza el recorrido BFS y lo muestra en la pantalla
+     * @param evt 
+     */
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
         Grafo grafo = Global.getGrafo();
         if (Global.getGrafo().getFirst()!=null){
@@ -980,7 +1007,10 @@ public class Interfaz extends javax.swing.JFrame {
         }else{
         JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes realizar el reporte");}
     }//GEN-LAST:event_BFSActionPerformed
-
+    /**
+     * Metodo desde el cual realiza el recorrido DFS y lo muestra en la pantalla
+     * @param evt 
+     */
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
         Grafo grafo = Global.getGrafo();
         if (Global.getGrafo().getFirst()!=null){

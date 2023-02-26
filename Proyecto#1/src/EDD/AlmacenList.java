@@ -4,10 +4,7 @@
  */
 package EDD;
 
-/**
- *
- * @author Tomas
- */
+ 
 public class AlmacenList {
     private Nodo<Almacen> head;
     private int size;
