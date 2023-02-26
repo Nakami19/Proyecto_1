@@ -280,9 +280,10 @@ public class Interfaz extends javax.swing.JFrame {
         Pedidos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
 
         Mostrar_Productos.setEditable(false);
-        Mostrar_Productos.setBackground(new java.awt.Color(51, 51, 51));
+        Mostrar_Productos.setBackground(new java.awt.Color(255, 255, 255));
         Mostrar_Productos.setColumns(20);
         Mostrar_Productos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        Mostrar_Productos.setForeground(new java.awt.Color(0, 0, 0));
         Mostrar_Productos.setRows(5);
         jScrollPane3.setViewportView(Mostrar_Productos);
 
