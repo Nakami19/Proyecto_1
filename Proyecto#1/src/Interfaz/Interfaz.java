@@ -1075,12 +1075,6 @@ public class Interfaz extends javax.swing.JFrame {
                        }
                    }
                        
-                       
-                       
-                   
-
-                    
-                   
 
                    
                    if (contador == productos.length){
@@ -1100,7 +1094,6 @@ public class Interfaz extends javax.swing.JFrame {
                              int suma_pedido=producto1.getQuantity();
                              int restante = Integer.parseInt(nombre_produ1[1]) - suma_pedido;
                              producto1.setQuantity(0);
-                             System.out.println(inicio.getName());
                              if ( pProducto1.getQuantity()>= restante){
                               pProducto1.setQuantity(pProducto1.getQuantity() - restante);
                              }}
@@ -1113,6 +1106,55 @@ public class Interfaz extends javax.swing.JFrame {
                      }
 
                     JOptionPane.showMessageDialog(null,"La ruta mas cercana es"+"\n"+grafo.grafoDijsktra(inicio.getName(),storage.getName()).printRoute());
+                        Funciones func =new Funciones();
+                        Graph graph = new SingleGraph("Almacenes");
+ 
+                        graph.setStrict(false);
+                        graph.setAutoCreate(true);
+        
+                        String nombres_almacenes=func.nombres_almacenes(grafo.grafoDijsktra(inicio.getName(),storage.getName()));
+        
+                        if(!nombres_almacenes.equals("")) {
+                           String[] nombres=nombres_almacenes.split(",");
+            
+                          for (int h = 0; h < nombres.length; h++) {
+                          graph.addNode(nombres[h]);
+                          }
+                          
+                           for (Node node : graph) {
+                        node.setAttribute("ui.label", node.getId());
+                        }
+            
+                          String rutas=grafo.saveroute();
+                           rutas=rutas.replace("Rutas;", "");
+                            rutas=rutas.trim();
+                           String[] route=rutas.split("\n");
+                           for (int h = 0; h < route.length; h++) {
+                                String[] info_ruta=route[h].split(",");
+                
+                              graph.addEdge(info_ruta[0]+info_ruta[1],info_ruta[0],info_ruta[1],true).addAttribute("ui.label", info_ruta[2]);
+
+                          }
+            
+                         String styleSheet = "node{"
+                             + "text-mode: normal; text-alignment: center;text-size: 30;"
+                             + "size: 35px; fill-mode: plain; fill-color: green;text-padding: 2;shape:circle;} "
+                             + ""
+                             + "edge {"
+                               + "shape: cubic-curve; arrow-shape:arrow; arrow-size: 10; "
+                               + "fill-mode: dyn-plain; fill-color: black; text-size: 25; text-alignment: under;}";
+            
+            
+                            System.setProperty("org.graphstream.ui.renderer",
+                         "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+                             graph.setAttribute("ui.stylesheet", styleSheet);
+                          
+             
+                           Viewer view = graph.display();
+                           view.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+                           view.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+             
+                            } else{JOptionPane.showMessageDialog(null, "No hay informacion cargada");}
                     exito=true;
                     validador =true;
                     break;
@@ -1123,6 +1165,7 @@ public class Interfaz extends javax.swing.JFrame {
                        inicio=inicio.getSiguiente();}
                        else{
                            validador =true;
+                           exito=false;
                            break;
                        }
                    }                   
@@ -1131,13 +1174,7 @@ public class Interfaz extends javax.swing.JFrame {
                    contador=0;
                 }
                    
-                   
-                  
-                   
 
-                   
-
-               
                 if(exito==true) {
                JOptionPane.showMessageDialog(null, "Pedido realizado con exito");
                 
