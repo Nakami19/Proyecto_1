@@ -38,12 +38,6 @@ public class Interfaz extends javax.swing.JFrame {
      * Creates new form Interfaz
      */
     public Interfaz() {
-//       Grafo grafo1 = Global.getGrafo();
-//       Almacen origin1 = new Almacen("hola");
-//       Almacen origin2 = new Almacen("chao");
-//       grafo1.newNode(origin1);
-//       grafo1.newNode(origin2);
-//        grafo1.newArista(origin1, origin2,  2);
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -571,7 +565,10 @@ public class Interfaz extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Metodo desde el cual se accede a la pantalla de pedidos
+     * @param evt 
+     */
     private void Boton_pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_pedidosActionPerformed
         Grafo grafo=Global.getGrafo();
         
@@ -609,7 +606,10 @@ public class Interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Boton_pedidosActionPerformed
 
-
+    /**
+     * Metodo donde se selecciona el txt que se desea cargar, para luego proceder a dividir el contenido del txt en partes con el fin de meter cada elemento en su lugar correspondiente en el grafo
+     * @param evt 
+     */
     private void load_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_txt_buttonActionPerformed
         JFileChooser file = new JFileChooser();
         
@@ -876,7 +876,11 @@ public class Interfaz extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No hay almacenes registrados, por favor lee el TXT antes de registrar un almacen");
             }
     }//GEN-LAST:event_insertarRutaActionPerformed
-
+    
+    /**
+     * Metodo donde se "llaman" a los string que contienen los almacenes junto a sus productos y las rutas, para luego reemplazar la informacion que habia en el txt cargado al principio con la informacion nueva obtenida
+     * @param evt 
+     */
     private void save_txt_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_txt_buttonActionPerformed
        Grafo grafo = Global.getGrafo();
        
@@ -896,7 +900,10 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error!!!!!");
         } 
     }//GEN-LAST:event_save_txt_buttonActionPerformed
-
+    /**
+     * Metodo donde mediante el uso de la libreria GraphStream se crea una representacion grafica del grafo
+     * @param evt 
+     */
     private void Mostrar_grafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mostrar_grafoActionPerformed
 
        
@@ -989,7 +996,11 @@ public class Interfaz extends javax.swing.JFrame {
     private void Pedido_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pedido_inputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Pedido_inputActionPerformed
-
+    
+    /**
+     * Metodo donde se recibe un pedido y se procede a evaluar la capacidad del almacen solicitado y sus adyacencias para cumplir con el pedido
+     * @param evt 
+     */
     private void PedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedirActionPerformed
        Grafo grafo = Global.getGrafo();
         if (grafo.getFirst()!=null) {
@@ -1139,15 +1150,9 @@ public class Interfaz extends javax.swing.JFrame {
                         }
                        }
 
-                      
-                       //procede a buscar en otros almacenes 
                    }
                    }
-                   
-                  if (producto==null){
-                       //solicitar pedido tu momento kevin
-                       System.out.println("no hay en el almacen");
-                   }  
+                  
                    
 
                    

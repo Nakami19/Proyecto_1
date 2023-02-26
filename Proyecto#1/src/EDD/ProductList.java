@@ -59,6 +59,13 @@ public class ProductList {
         return cadena;
     }
      
+     
+     
+       /**
+        * Metodo que se utiliza para buscar un producto especifico en la lista
+        * @param name el parametro name define el nombre del profucto que se desea buscar
+        * @return en caso de encontrar el producto retornara su objeto, de no encontrarlo retornara null
+        */
        public Product searchproduct(String name) {
 
         if (!empty()) {

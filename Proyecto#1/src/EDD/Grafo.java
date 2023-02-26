@@ -93,6 +93,11 @@ public class Grafo {
         return cadena;
     }
     
+    
+    /**
+     * Metodo para guardar todas las rutas de los almacenes en un mismo string con formato para ser leido al cargar txt
+     * @return String que contiene las rutas de todos los almacenes 
+     */
    public String saveroute() {
             String cadena ="Rutas;\n";
         Almacen temp = getFirst();
@@ -104,6 +109,12 @@ public class Grafo {
     
     }
    
+   
+   
+   /**
+    * Metodo para guardar todos los almacenes y sus productos en un mismo string para ser leido al cargar txt
+    * @return String que contiene el nombre de los almacenes junto a sus respectivos productos
+    */
     public String saveproducts() {
         String almacenes="Almacenes;\n";
         Almacen temp = getFirst();
