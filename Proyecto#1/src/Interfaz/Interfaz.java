@@ -947,7 +947,10 @@ public class Interfaz extends javax.swing.JFrame {
                        //procede a buscar en otros almacenes 
                    } 
                    
-                  
+                  if (producto==null){
+                       //solicitar pedido tu momento kevin
+                       System.out.println("no hay en el almacen");
+                   }  
                    
 
                    
