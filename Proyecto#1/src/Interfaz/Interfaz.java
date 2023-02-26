@@ -906,160 +906,133 @@ public class Interfaz extends javax.swing.JFrame {
        else {
            try{
                  
-                 Funciones funciones=new Funciones();
+                Funciones funciones=new Funciones();
                 String pedido=Pedido_input.getText();
                 String almacen=box.getSelectedItem().toString();
                 ProductList todosproductos=funciones.mostrar_disponible(grafo);
                 String mostrar=todosproductos.mostrar();
                 String[] productos=pedido.split("/");
+                String[] productos1=pedido.split("/");
                 String[] nombre_produ;
+                String[] nombre_produ1;
                 Almacen storage=grafo.getVertice(almacen);
+
+                Almacen inicio = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
                 boolean exito=true;
+                int contador =0;
+                boolean validador = false;
                 
+                while (validador != true){
+                    
                 for (int i = 0; i <productos.length; i++) {
-                   nombre_produ=productos[i].split(",");
-                   Product producto=storage.getListaProductos().searchproduct(nombre_produ[0]) ;
-                   if (todosproductos.searchproduct(nombre_produ[0])== null){
-                       exito = false;
-                   }
-                   
+                    
+                nombre_produ=productos[i].split(",");
+                Product producto=storage.getListaProductos().searchproduct(nombre_produ[0]) ;
+                Product pProducto = grafo.getVertice(inicio.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                
+                
+                if (todosproductos.searchproduct(nombre_produ[0])== null){
+                exito = false;
+                validador =true;
+                break;}
+                
                    else if (producto==null){
-                        
-                        
-                      Almacen primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
-                      Product pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
-                      boolean alcanza1=false;
-                      
-                       while (primero!= null){
                            if (pProducto != null){
                                 if ( pProducto.getQuantity()>= Integer.parseInt(nombre_produ[1])){
-                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
-                            pProducto.setQuantity(pProducto.getQuantity() - Integer.parseInt(nombre_produ[1]) );
-                            alcanza1=true;
-                            break;}}
-                        primero = primero.getSiguiente();
-                        if (primero != null){
-                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                                    contador+=1;}
+                           }
 
-                        }}
-                        
-                       if (alcanza1 == false){
-                            primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
-                            pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
-                            int restante1 = Integer.parseInt(nombre_produ[1]); 
-                            JOptionPane.showMessageDialog(null,"Como no se puede reestablecer el stock con solo 1 almacen, se procedira a sumar los stocks para los almacenes mas cercanos de "+storage.getName());
-                           while (primero!= null && restante1!=0){
-                           if (pProducto!= null){
-                               if (restante1>= pProducto.getQuantity()){
-                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
-
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante1 +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
-                            restante1-=pProducto.getQuantity();
-                            pProducto.setQuantity(0);
-                               }
-                               else if (restante1 < pProducto.getQuantity()){
-                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
-                            
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante1 +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
-                            pProducto.setQuantity(pProducto.getQuantity() - restante1);
-                            restante1 = 0;}
-                               }
-
-                           if (restante1 == 0){ 
-                           break;}
-                        primero = primero.getSiguiente();    
-                        if (primero != null){
-                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
-                        }
-                       }
-
-                      
-                       //procede a buscar en otros almacenes 
-                   
-                       
-                   }}  
+                                           
+                   }  
                     else if(producto!=null && producto.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto.getQuantity()) {
-                       producto.setQuantity(producto.getQuantity()-Integer.parseInt(nombre_produ[1]));
-                       exito=true;
+                       contador+=1;
+                       
                    }
                    else if(todosproductos.searchproduct(nombre_produ[0]).getQuantity()<Integer.parseInt(nombre_produ[1])) {
-                       JOptionPane.showMessageDialog(null, "No hay stock suficiente para satisfacer el pedido de "+nombre_produ[0]+" "+"De ser posible se procesara el resto de su pedido");
+                       JOptionPane.showMessageDialog(null, "No hay stock suficiente para satisfacer el pedido de "+nombre_produ[0]);
                        exito=false;
+                       validador=true;
+                       break;
                    }
                    
                    else if (Integer.parseInt(nombre_produ[1])>producto.getQuantity()){
-                       boolean alcanza2= false;
-                       int suma_pedido=producto.getQuantity();
-                       int restante = Integer.parseInt(nombre_produ[1]) - suma_pedido;
-                       producto.setQuantity(0);
-                       Almacen primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
-                       Product pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
-                       
-                       while (primero!= null){
-                           if (pProducto!= null){
+                   int suma_pedido=producto.getQuantity();
+                   int restante = Integer.parseInt(nombre_produ[1]) - suma_pedido;
+
+                        if (pProducto!= null){
                         if ( pProducto.getQuantity()>= restante){
-                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para el producto "+ pProducto.getName()+"\n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
-                            pProducto.setQuantity(pProducto.getQuantity() - restante);
-                            alcanza2=true;
-                            break;}}
-                        primero = primero.getSiguiente();    
-                        if (primero != null){
-                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
-                        }
+                            contador +=1;}
+
                        }
+                   }
                        
-                       if (alcanza2 == false){
-                            primero = grafo.ordenDijsktra(storage.getName()).getFirst().getSiguiente();
-                            pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
-                            JOptionPane.showMessageDialog(null,"Como no se puede reestablecer el stock con solo 1 almacen, se procedira a sumar los stocks para los almacenes mas cercanos de "+storage.getName());
-                           while (primero!= null){
-                           if (pProducto!= null){
-                               if (restante>= pProducto.getQuantity()){
-                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
+                       
+                       
+                   
 
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
-                            restante-=pProducto.getQuantity();
-                            pProducto.setQuantity(0);
+                    
+                   
 
+                   
+                   if (contador == productos.length){
+                    for (int y = 0; y <productos1.length; y++) {
+                        nombre_produ1=productos1[y].split(",");
+                        Product producto1=storage.getListaProductos().searchproduct(nombre_produ1[0]);
+                        Product pProducto1 = grafo.getVertice(inicio.getName()).getListaProductos().searchproduct(nombre_produ1[0]);                     
+                        
+                        if (producto1==null){
+                         
+                        if ( pProducto1.getQuantity()>= Integer.parseInt(nombre_produ1[1])){
+                            pProducto1.setQuantity(pProducto1.getQuantity() - Integer.parseInt(nombre_produ1[1]) );}}
+                        
+                        
+                        else if (Integer.parseInt(nombre_produ1[1])>producto1.getQuantity()){
 
-                               }
-                               else if (restante < pProducto.getQuantity()){
-                            // aqui tienes que poner lo de imprimir el grafo, la funcion que retorna el grafo es grafo.grafoDijsktra(primero.getName(),storage.getName()) y ya, exitos natalia
-                            
-                            JOptionPane.showMessageDialog(null,"La ruta mas cercana para un restante de "+ restante +" del producto "+ pProducto.getName()+" es: \n"+grafo.grafoDijsktra(primero.getName(),storage.getName()).printRoute());
-                            pProducto.setQuantity(pProducto.getQuantity() - restante);
-                            restante = 0;}
-                               }
-
-                           if (restante == 0){ 
-                           break;}
-                        primero = primero.getSiguiente();    
-                        if (primero != null){
-                             pProducto = grafo.getVertice(primero.getName()).getListaProductos().searchproduct(nombre_produ[0]);
+                             int suma_pedido=producto1.getQuantity();
+                             int restante = Integer.parseInt(nombre_produ1[1]) - suma_pedido;
+                             producto1.setQuantity(0);
+                             System.out.println(inicio.getName());
+                             if ( pProducto1.getQuantity()>= restante){
+                              pProducto1.setQuantity(pProducto1.getQuantity() - restante);
+                             }}
+                        
+                        else if(producto1!=null && producto1.getQuantity()>=1 && Integer.parseInt(nombre_produ[1])<=producto1.getQuantity()) {
+                            producto1.setQuantity(producto1.getQuantity()- Integer.parseInt(nombre_produ1[1]));
                         }
+                        
+                   
+
+                        
+                     
+                         
+                     }
+
+                    JOptionPane.showMessageDialog(null,"La ruta mas cercana es"+"\n"+grafo.grafoDijsktra(inicio.getName(),storage.getName()).printRoute());
+                    exito=true;
+                    validador =true;
+                    break;
+                   }
+                    
+                   if (i == productos.length-1){
+                       if (inicio.getSiguiente()!=null){
+                       inicio=inicio.getSiguiente();}
+                       else{
+                           validador =true;
+                           break;
                        }
+                   }                   
 
-                      
-                       //procede a buscar en otros almacenes 
-                   }
-                   }
-                   
-                  
-                   
-
-                   
-
-               }
+                }
+                   contador=0;
+                }
                 if(exito==true) {
                JOptionPane.showMessageDialog(null, "Pedido realizado con exito");
                 
                 }
                 else {JOptionPane.showMessageDialog(null, "No fue posible procesar su pedido");}
-               Pedido_input.setText("");
-                Mostrar_Productos.setText(funciones.mostrar_disponible(grafo).mostrar());
-           } 
+                Pedido_input.setText("");
+                Mostrar_Productos.setText(funciones.mostrar_disponible(grafo).mostrar());}
+            
 
         catch(Exception e) {JOptionPane.showMessageDialog(null, "Error!! Ingrese el pedido correctamente");}
         
