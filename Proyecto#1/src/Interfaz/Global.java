@@ -7,10 +7,11 @@ package Interfaz;
 import EDD.Grafo;
 
 /**
- *
- * @author Tomas
+ * Clase "global" que permite que la interfaz gráfica acceda al grafo de una forma más sencilla
+ * @author: Kevin Li, Tomás Gil y Natalia Rivas
  */
 public class Global {
+    //Parámetros de la clase Global
     private static Grafo grafo = new Grafo();
 
     /**

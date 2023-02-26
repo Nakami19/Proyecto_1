@@ -6,7 +6,7 @@ package EDD;
 
 /**
 
- * Esta clase es el nodo de la lista de adyacencia
+ * Esta clase es la lista de productos que irá dentro del almacén
 
  * @author: Kevin Li, Tomás Gil y Natalia Rivas
 
@@ -14,20 +14,30 @@ package EDD;
 
  */  
 public class ProductList {
+    //Campos de la clase
     private Nodo<Product> head;
     private int size;
-
+    
+    //Constructor de la clase
     public ProductList() {
         this.head = null;
         this.size = 0;
     }
     
+    /**
+     * Funcion que verifica si la lista de productos está vacía
+     * @return un booleano que indica si la lista está vacía o no
+     */
     public boolean empty() {
         return getHead()==null;
     
     }
     
-    
+    /**
+     * Método que inserta al final de la list
+     * @param producto Producto que se va a insertar dentro del nodo producto para introducirse en la lista
+     * @return El nodo que se introdujo a la lista de productos
+     */
     public Nodo insertEnd(Product producto){
         Nodo<Product> node = new Nodo<Product>(producto);
         if (isEmpty()) {
@@ -48,6 +58,10 @@ public class ProductList {
         return node;
     }
     
+    /**
+     * Función que guarda en una cadena de texto los datos de todos los productos de la lista y los retorna para poder imprimirse
+     * @return La cadena de texto con todos los datos de la lista de productos
+     */
      public String mostrar() {
     Nodo<Product> aux=getHead();
     String cadena="";

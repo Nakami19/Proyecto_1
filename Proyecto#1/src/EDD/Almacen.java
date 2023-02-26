@@ -35,27 +35,45 @@ public class Almacen {
         this.dPesofijo=0;
     //Cierre del constructor
     }
-
+    
+    /**
+     * @return the dPesoFijo
+     */
     public int getdPesofijo() {
         return dPesofijo;
     }
-
+    
+    /**
+     * @param dPesofijo the dPesofijo to set
+     */
     public void setdPesofijo(int dPesofijo) {
         this.dPesofijo = dPesofijo;
     }
-
+    
+    /**
+     * @return the dPrevious
+     */
     public String getdPrevious() {
         return dPrevious;
     }
-
+    
+    /**
+     * @param dPrevious the dPrevious to set
+     */
     public void setdPrevious(String dPrevious) {
         this.dPrevious = dPrevious;
     }
-
+    
+    /**
+     * @return the dPeso
+     */
     public int getdPeso() {
         return dPeso;
     }
-
+    
+    /**
+     * @param dPeso the dPeso to set
+     */
     public void setdPeso(int dPeso) {
         this.dPeso = dPeso;
     }

@@ -5,13 +5,17 @@
 package EDD;
 
 /**
- *
- * @author Tomas
+ * Clase Nodo de tipo general que va a ser utilizada para almacenar los datos de Almacenes y productos para sus respectivas listas
+ * 
+ * @author Kevin Li, Tomás Gil y Natalia Rivas
  */
+
 public class Nodo<T> {
+    //Campos de la Clase
     private T data;
     private Nodo<T> next;
-
+    
+    //Constructor de la clase
     public Nodo(T data) {
         this.data = data;
         this.next = null;
@@ -45,8 +49,4 @@ public class Nodo<T> {
         this.next = next;
     }
     
-    @Override
-    public String toString(){
-        return getData() + " (" + getNext() + ")";
-    }
 }   

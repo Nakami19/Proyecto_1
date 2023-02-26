@@ -6,7 +6,7 @@ package EDD;
 
 /**
  *Esta clase contiene funciones auxiliares 
- * @author Natalia
+ * @author Kevin Li, Tomás Gil y Natalia Rivas
  * @version 22/02/23
  */
 public class Funciones {

@@ -30,7 +30,7 @@ import org.graphstream.ui.view.Viewer;
 
 /**
 
- * Esta clase es el nodo de la lista de adyacencia
+ * Esta clase es la interfaz gráfica del proyecto
 
  * @author: Kevin Li, Tomás Gil y Natalia Rivas
 
@@ -989,7 +989,10 @@ public class Interfaz extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_Mostrar_grafoActionPerformed
-
+    /**
+     * Metodo desde el cual se cambia a la pestaña de Recorrido por DFS & BFS
+     * @param evt 
+     */
     private void reporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteActionPerformed
         Parent.removeAll();
         Parent.add(BFS_DFS);

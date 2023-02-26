@@ -6,7 +6,7 @@ package EDD;
 
 /**
 
- * Esta clase es el nodo de la lista de adyacencia
+ * Esta clase es el producto que irán dentro de los nodos para la lista de productos
 
  * @author: Kevin Li, Tomás Gil y Natalia Rivas
 

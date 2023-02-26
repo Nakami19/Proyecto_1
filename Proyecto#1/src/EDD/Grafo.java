@@ -7,7 +7,7 @@ import Interfaz.Global;
 
 /**
 
- * Esta clase realiza las funciones del grafo
+ * Esta clase es el grafo; Realiza las funciones del grafo
 
  * @author: Kevin Li, Tomás Gil y Natalia Rivas
 
@@ -634,7 +634,12 @@ public class Grafo {
         this.last = last;
     }
     
+    
     public boolean grafoEmpty(){
+        /**
+        * Revisa si el grafo está vacío
+        * @return Retorna un booleano de si el grafo está vacío o no
+        */
         return getFirst() == null;
     }
     

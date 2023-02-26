@@ -14,9 +14,11 @@ package EDD;
 
  */  
 public class AdjacentList {
+    //Campos de la Clase
     private Route first;
     private Route last;
     
+    //Constructor de la clase
     public AdjacentList(){
         this.first = null;
         this.last = null;
@@ -50,10 +52,19 @@ public class AdjacentList {
         this.last = last;
     }
     
+    /**
+     * Método que determina si la lista adyacencia está vacía o no
+     * @return Retorna un booleano de si la lista adyacencia está vacía o no
+     */
     public boolean isEmpty() {
         return getFirst()==null;
     }
     
+    /**
+     * Funcion que determina si la adyacencia entre un Almacen de origen y un almacen de destino ya existe
+     * @param dato Nombre del almacén de destino
+     * @return un Booleano que nos indicará si esta adyacencia ya existía de desde antes o si es una adyacencia nueva
+     */
     public boolean Adyacente(String dato){
         Route actual = getFirst();
         boolean encontrado = false;
@@ -66,6 +77,11 @@ public class AdjacentList {
         return encontrado;
     }
     
+    /**
+     * Método que crea una nueva adyacencia entre un Almacen de origen y un almacen de destino junto al peso de esa adyacencia
+     * @param destiny Indica hacia dónde va a ir el elemento de origen
+     * @param weight Indica el peso que va a tener la conexión
+     */
     public void newAdjacency(Almacen destiny, int weight){
         if(!Adyacente(destiny.getName())){
             Route node = new Route(destiny ,weight); 
@@ -73,6 +89,12 @@ public class AdjacentList {
         }
     }
     
+    
+    /**
+     * Clase que va a insertar la adyacencia creada previamente en la lista adyacencia, manteniendo el orden en la lista adyacencia al comparar los nombres
+     * @param nodo La ruta que se va a insertar en la lista adyacencia
+     * @param destiny El destindo de esa ruta, utilizado para mantener un orden en los destinos
+     */
     public void Insert(Route nodo, Almacen destiny) {
         if (isEmpty()){
             setFirst(nodo);
@@ -99,6 +121,10 @@ public class AdjacentList {
     
     }
     
+    /**
+     * Metodo que guarda en un String todos los caminos de la lista adyacencia
+     * @return String que contiene todos los datos en toda la lista Adyacencia
+     */
     public String Imprimir(){
         String cadena ="";
         Route temp = getFirst();
